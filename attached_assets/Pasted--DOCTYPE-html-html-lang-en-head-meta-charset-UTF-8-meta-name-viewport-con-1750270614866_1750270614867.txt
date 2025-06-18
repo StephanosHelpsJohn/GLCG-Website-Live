@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Good Lyfe Consulting Group | Operationalize AI</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide-react@latest/dist/lucide-react.js"></script>
+    
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A0917; /* Deep dark background */
+            color: #E0E0E0; /* Light gray for text */
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(58, 16, 151, 0.3) 0%, rgba(10, 9, 23, 0) 60%);
+        }
+        .accent-gradient-text {
+            background: linear-gradient(90deg, #4F46E5, #00A9FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.25);
+        }
+        .section {
+            padding: 8rem 1rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #4F46E5;
+            border: 3px solid #0A0917;
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-opacity-30 backdrop-blur-lg border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- HEADER LOGO (Icon + Text) -->
+            <a href="#" class="flex items-center space-x-4">
+                 <img src='https://i.postimg.cc/Jhpvpzmf/THE-GOOD-LYFE-CONSULTING-GROUP-White-No-Words-PNG.png' alt="GLC Logo Icon" class="h-16">
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#About-us" class="text-gray-300 hover:text-white transition-colors">About Us</a>
+                <a href="#process" class="text-gray-300 hover:text-white transition-colors">Process</a>
+                <a href="#why-us" class="text-gray-300 hover:text-white transition-colors">Why Us</a>
+            </nav>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
+            <div class="hero-gradient absolute inset-0"></div>
+            <canvas id="hero-canvas" class="absolute inset-0 w-full h-full opacity-50"></canvas>
+            <div class="relative z-10 p-6">
+                <h2 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4 scroll-reveal">
+                    Make Work Suck Less.<br> <span class="accent-gradient-text">Supercharge Your Workforce with AI.</span>
+                </h2>
+                <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-300 mb-8 scroll-reveal" style="transition-delay: 200ms;">
+                    The Good Lyfe Consulting Group will help you frictionlessly implement the right AI solutions for your business, redefining how your employees use their time.
+                </p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Problem/Challenge Section -->
+        <section class="bg-gray-900/50 text-center section scroll-reveal">
+            <div class="container mx-auto px-6">
+                <h3 class="text-4xl font-bold mb-4">The World is Moving to AI—Are You Ready?</h3>
+                <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-12">Enterprises face new challenges in the age of AI. Turning them into opportunities is the key to leadership.</p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-gray-800 p-8 rounded-xl border border-gray-700">
+                        <svg class="w-12 h-12 mx-auto mb-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9 9 0 0 1-9-9 9 9 0 0 1 9-9 9 9 0 0 1 9 9c0 2.38-1 4.54-2.6 6.01M12 21a9 9 0 0 0 9-9 9 9 0 0 0-9-9 9 9 0 0 0-9 9c0 2.38 1 4.54 2.6 6.01M12 21v-4M8 17l-1.5-1.5M16 17l1.5-1.5M12 3v4M8 7l-1.5 1.5M16 7l1.5 1.5"></path>
+                           <circle cx="12" cy="12" r="2" stroke-width="1.5"></circle>
+                           <path d="M12 8v-2m0 12v-2m4-4h2M4 12h2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+                        </svg>
+                        <h4 class="text-xl font-semibold mb-2">Lack of In-House AI Expertise</h4>
+                        <p class="text-gray-400">The talent gap is real. We bridge it by acting as your dedicated AI strategy and implementation team.</p>
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-xl border border-gray-700">
+                        <svg class="w-12 h-12 mx-auto mb-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <h4 class="text-xl font-semibold mb-2">Rapid Innovation Pace</h4>
+                        <p class="text-gray-400">AI evolves daily. We keep you at the cutting edge, implementing the latest, most effective solutions.</p>
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-xl border border-gray-700">
+                       <svg class="w-12 h-12 mx-auto mb-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        <h4 class="text-xl font-semibold mb-2">Data Governance & Security</h4>
+                        <p class="text-gray-400">We build with a security-first mindset, ensuring your custom AI solutions are robust and compliant.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What We Do Section -->
+        <section id="services" class="section text-center scroll-reveal">
+            <div class="container mx-auto px-6">
+                 <h3 class="text-4xl font-bold mb-4">Transforming Challenges into Competitive Advantages</h3>
+                <p class="text-lg text-gray-400 max-w-3xl mx-auto mb-16">We build enterprise-first AI solutions that drive real business impact by integrating seamlessly into how you already work.</p>
+                <div class="grid md:grid-cols-3 gap-12 text-left">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 bg-indigo-600/20 text-indigo-300 p-3 rounded-full">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">Frictionless Adoption</h4>
+                            <p class="text-gray-400">AI should adapt to you, not the other way around. We integrate powerful AI tools directly into your existing software and workflows for immediate uptake.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 bg-indigo-600/20 text-indigo-300 p-3 rounded-full">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">AI for Every Role</h4>
+                            <p class="text-gray-400">From sales and marketing to HR and finance, we democratize AI by building custom solutions that empower every function in your organization.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 bg-indigo-600/20 text-indigo-300 p-3 rounded-full">
+                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">Automate the Boring Stuff</h4>
+                            <p class="text-gray-400">Free your team from repetitive, low-value tasks. Let them focus on strategic work and what they do best—being creative, innovative, and human.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section id="process" class="section bg-gray-900/50 scroll-reveal">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h3 class="text-4xl font-bold mb-4">Your Seamless AI Transformation Journey</h3>
+                    <p class="text-lg text-gray-400 max-w-2xl mx-auto">A clear, collaborative process designed to deliver tangible results quickly and efficiently.</p>
+                </div>
+                <div class="relative max-w-2xl mx-auto">
+                    <div class="absolute left-0 h-full border-l-2 border-dashed border-gray-700" style="left: -30px;"></div>
+                    <div class="space-y-16">
+                        <div class="relative pl-8 timeline-item">
+                            <h4 class="text-2xl font-semibold mb-2">1. Workflow Audit & Discovery</h4>
+                            <p class="text-gray-400">We dive deep into your operations to identify the most impactful opportunities for AI automation—the repeatable, remedial tasks ripe for transformation.</p>
+                        </div>
+                        <div class="relative pl-8 timeline-item">
+                            <h4 class="text-2xl font-semibold mb-2">2. Custom AI Integration Plan</h4>
+                            <p class="text-gray-400">No one-size-fits-all solutions. We design a tailored AI strategy and architecture that aligns with your specific goals and existing systems.</p>
+                        </div>
+                        <div class="relative pl-8 timeline-item">
+                            <h4 class="text-2xl font-semibold mb-2">3. Launch, Train & Operationalize</h4>
+                            <p class="text-gray-400">We handle the full implementation and provide comprehensive training to ensure your teams can leverage their new AI tools effortlessly from day one.</p>
+                        </div>
+                        <div class="relative pl-8 timeline-item">
+                            <h4 class="text-2xl font-semibold mb-2">4. Ongoing Support & Innovation</h4>
+                            <p class="text-gray-400">AI isn't a one-time project. We provide continuous support and proactively identify new opportunities to create automations that drive value.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section id="why-us" class="section text-center scroll-reveal">
+            <div class="container mx-auto px-6">
+                <h3 class="text-4xl font-bold mb-4">Operationalize AI, Don't Just Talk About It.</h3>
+                <p class="text-lg text-gray-400 max-w-3xl mx-auto mb-16">We're not just consultants; we're builders and partners in your success.</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-gray-800 p-8 rounded-lg border border-gray-700">
+                        <h4 class="text-xl font-semibold mb-2">Proven Expertise</h4>
+                        <p class="text-gray-400">Led by talent with experience at Meta, we bring world-class AI development to your business.</p>
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-lg border border-gray-700">
+                        <h4 class="text-xl font-semibold mb-2">Tangible Savings</h4>
+                        <p class="text-gray-400">Our core promise: custom workflows that save your team hours every single week.</p>
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-lg border border-gray-700">
+                        <h4 class="text-xl font-semibold mb-2">Employee Empowerment</h4>
+                        <p class="text-gray-400">Boost morale and output by letting your team focus on work they actually enjoy.</p>
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-lg border border-gray-700">
+                        <h4 class="text-xl font-semibold mb-2">Custom & Secure</h4>
+                        <p class="text-gray-400">Secure, compliant, and easy-to-use solutions built specifically for your enterprise needs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA / Contact Section -->
+        <section id="contact" class="section bg-indigo-900/20 scroll-reveal">
+            <div class="container mx-auto px-6 text-center">
+                <h3 class="text-4xl font-bold text-white mb-4">Ready to Supercharge Your Workforce?</h3>
+                <p class="text-lg text-gray-300 mb-8">Let's talk about how we can transform your business with custom AI.</p>
+                <a href="mailto:info@GLC.ai" class="cta-button inline-block bg-green-500 text-white font-bold py-4 px-10 text-lg rounded-lg shadow-xl hover:bg-green-400">
+                    Contact Us Today
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-8">
+        <div class="container mx-auto px-6 text-center text-gray-500 flex flex-col items-center space-y-6">
+            <!-- FOOTER LOGO (Updated with text version, Larger) -->
+            <img src='https://i.postimg.cc/nzYThHcd/PNG-white-logo-fo-site.png' alt='GLC Logo with text' class="h-36">
+            <p>&copy; 2024 The Good Lyfe Consulting Group. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hero Canvas Animation
+        const canvas = document.getElementById('hero-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 2 - 1;
+                this.speedY = Math.random() * 2 - 1;
+                this.color = `rgba(79, 70, 229, ${Math.random()})`;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.size > 0.1) this.size -= 0.01;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            let numberOfParticles = (canvas.width * canvas.height) / 9000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+            connectParticles();
+            requestAnimationFrame(animateParticles);
+        }
+
+        function connectParticles() {
+            let opacityValue = 1;
+            for (let a = 0; a < particles.length; a++) {
+                for (let b = a; b < particles.length; b++) {
+                    let distance = Math.sqrt(
+                        Math.pow(particles[a].x - particles[b].x, 2) +
+                        Math.pow(particles[a].y - particles[b].y, 2)
+                    );
+                    if (distance < 100) {
+                        opacityValue = 1 - (distance / 100);
+                        ctx.strokeStyle = `rgba(79, 70, 229, ${opacityValue})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[a].x, particles[a].y);
+                        ctx.lineTo(particles[b].x, particles[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+        
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            initParticles();
+        });
+        
+        resizeCanvas();
+        initParticles();
+        animateParticles();
+
+        // Scroll Reveal Animation
+        const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+
+        const elementInView = (el, dividend = 1) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+            );
+        };
+        
+        const displayScrollElement = (element) => {
+            element.classList.add('visible');
+        };
+
+        const handleScrollAnimation = () => {
+            scrollRevealElements.forEach((el) => {
+                if (elementInView(el, 1.25)) {
+                    displayScrollElement(el);
+                }
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            handleScrollAnimation();
+        });
+
+        // Trigger for elements already in view on load
+        handleScrollAnimation();
+
+    </script>
+</body>
+</html>
