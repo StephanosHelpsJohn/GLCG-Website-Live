@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Good Lyfe Consulting Group | Operationalize AI</title>
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide-react@latest/dist/lucide-react.js"></script>
-    
+
     <!-- Custom Styles -->
     <style>
         body {
@@ -62,25 +62,50 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Mobile Menu Transition */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+        }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased overflow-x-hidden">
 
     <!-- Header -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-opacity-30 backdrop-blur-lg border-b border-gray-800">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- HEADER LOGO (Icon + Text) -->
+            <!-- HEADER LOGO -->
             <a href="#" class="flex items-center space-x-4">
                  <img src='https://i.postimg.cc/Jhpvpzmf/THE-GOOD-LYFE-CONSULTING-GROUP-White-No-Words-PNG.png' alt="GLC Logo Icon" class="h-16">
             </a>
+
+            <!-- Desktop Navigation -->
             <nav class="hidden md:flex items-center space-x-8">
                 <a href="#About-us" class="text-gray-300 hover:text-white transition-colors">About Us</a>
                 <a href="#process" class="text-gray-300 hover:text-white transition-colors">Process</a>
                 <a href="#why-us" class="text-gray-300 hover:text-white transition-colors">Why Us</a>
             </nav>
-            </a>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
         </div>
     </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-full bg-gray-900/95 backdrop-blur-sm z-50 transform translate-x-full">
+        <div class="flex flex-col items-center justify-center h-full">
+            <button id="close-menu-button" class="absolute top-8 right-8 text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <a href="#About-us" class="mobile-menu-link text-3xl font-bold text-white mb-8">About Us</a>
+            <a href="#process" class="mobile-menu-link text-3xl font-bold text-white mb-8">Process</a>
+            <a href="#why-us" class="mobile-menu-link text-3xl font-bold text-white">Why Us</a>
+        </div>
+    </div>
+
 
     <main>
         <!-- Hero Section -->
@@ -89,12 +114,11 @@
             <canvas id="hero-canvas" class="absolute inset-0 w-full h-full opacity-50"></canvas>
             <div class="relative z-10 p-6">
                 <h2 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4 scroll-reveal">
-                    Make Work Suck Less.<br> <span class="accent-gradient-text">Supercharge Your Workforce with AI.</span>
+                    Ditch Work's Drudgery.<br> <span class="accent-gradient-text">Supercharge Your Workforce with AI.</span>
                 </h2>
                 <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-300 mb-8 scroll-reveal" style="transition-delay: 200ms;">
                     The Good Lyfe Consulting Group will help you frictionlessly implement the right AI solutions for your business, redefining how your employees use their time.
                 </p>
-                </a>
             </div>
         </section>
 
@@ -226,7 +250,7 @@
             <div class="container mx-auto px-6 text-center">
                 <h3 class="text-4xl font-bold text-white mb-4">Ready to Supercharge Your Workforce?</h3>
                 <p class="text-lg text-gray-300 mb-8">Let's talk about how we can transform your business with custom AI.</p>
-                <a href="mailto:info@GLC.ai" class="cta-button inline-block bg-green-500 text-white font-bold py-4 px-10 text-lg rounded-lg shadow-xl hover:bg-green-400">
+                <a href="mailto:info@GLC.ai" class="cta-button inline-block bg-purple-800 text-white font-bold py-4 px-10 text-lg rounded-lg shadow-xl hover:bg-green-400">
                     Contact Us Today
                 </a>
             </div>
@@ -243,6 +267,27 @@
     </footer>
 
     <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+        function openMenu() {
+            mobileMenu.classList.remove('translate-x-full');
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.add('translate-x-full');
+        }
+
+        mobileMenuButton.addEventListener('click', openMenu);
+        closeMenuButton.addEventListener('click', closeMenu);
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+
         // Hero Canvas Animation
         const canvas = document.getElementById('hero-canvas');
         const ctx = canvas.getContext('2d');
@@ -318,12 +363,12 @@
                 }
             }
         }
-        
+
         window.addEventListener('resize', () => {
             resizeCanvas();
             initParticles();
         });
-        
+
         resizeCanvas();
         initParticles();
         animateParticles();
@@ -337,7 +382,7 @@
                 elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
             );
         };
-        
+
         const displayScrollElement = (element) => {
             element.classList.add('visible');
         };
