@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | The Good Lyfe Consulting Group</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A0917; /* Deep dark background */
+            color: #E0E0E0; /* Light gray for text */
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(58, 16, 151, 0.3) 0%, rgba(10, 9, 23, 0) 60%);
+        }
+        .accent-gradient-text {
+            background: linear-gradient(90deg, #4F46E5, #00A9FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .section {
+            padding: 8rem 1rem;
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-opacity-30 backdrop-blur-lg border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- HEADER LOGO (Icon + Text) -->
+            <a href="index.html" class="flex items-center space-x-4">
+                 <img src='https://i.postimg.cc/Jhpvpzmf/THE-GOOD-LYFE-CONSULTING-GROUP-White-No-Words-PNG.png' alt="GLC Logo Icon" class="h-16">
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                <a href="aboutme.html" class="text-white font-semibold">About Me</a>
+                <a href="index.html#process" class="text-gray-300 hover:text-white transition-colors">Process</a>
+                <a href="index.html#why-us" class="text-gray-300 hover:text-white transition-colors">Why Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
+            <div class="hero-gradient absolute inset-0"></div>
+            <div class="relative z-10 p-6">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4 scroll-reveal">
+                    About <span class="accent-gradient-text">Me</span>
+                </h1>
+                <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-300 mb-8 scroll-reveal" style="transition-delay: 200ms;">
+                    Learn more about the founder and vision behind The Good Lyfe Consulting Group.
+                </p>
+            </div>
+        </section>
+
+        <!-- About Me Content Section -->
+        <section class="section scroll-reveal">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="bg-gray-800 p-8 rounded-xl border border-gray-700">
+                    <h2 class="text-3xl font-bold mb-6">My Story</h2>
+                    <div class="prose prose-invert max-w-none">
+                        <p class="text-gray-300 text-lg mb-6">
+                            Welcome! I'm excited to share my journey with you and explain why I founded The Good Lyfe Consulting Group.
+                        </p>
+                        <p class="text-gray-300 text-lg mb-6">
+                            [Add your personal story here - your background, experience, what led you to start this company, your vision for helping businesses with AI transformation, etc.]
+                        </p>
+                        <p class="text-gray-300 text-lg mb-6">
+                            [You can add more paragraphs about your expertise, your approach to AI consulting, what makes you unique in this field, etc.]
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience/Skills Section -->
+        <section class="section bg-gray-900/50 scroll-reveal">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold mb-12 text-center">Experience & Expertise</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                        <h3 class="text-xl font-semibold mb-3">AI & Machine Learning</h3>
+                        <p class="text-gray-400">[Add your AI/ML experience and expertise here]</p>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                        <h3 class="text-xl font-semibold mb-3">Business Strategy</h3>
+                        <p class="text-gray-400">[Add your business strategy experience here]</p>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                        <h3 class="text-xl font-semibold mb-3">Technology Implementation</h3>
+                        <p class="text-gray-400">[Add your tech implementation experience here]</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section bg-indigo-900/20 scroll-reveal">
+            <div class="container mx-auto px-6 text-center">
+                <h3 class="text-4xl font-bold text-white mb-4">Let's Connect</h3>
+                <p class="text-lg text-gray-300 mb-8">Ready to discuss how we can transform your business with AI?</p>
+                <a href="mailto:info@GLC.ai" class="inline-block bg-green-500 text-white font-bold py-4 px-10 text-lg rounded-lg shadow-xl hover:bg-green-400 transition-all">
+                    Contact Me Today
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-8">
+        <div class="container mx-auto px-6 text-center text-gray-500 flex flex-col items-center space-y-6">
+            <!-- FOOTER LOGO -->
+            <img src='https://i.postimg.cc/nzYThHcd/PNG-white-logo-fo-site.png' alt='GLC Logo with text' class="h-36">
+            <p>&copy; 2024 The Good Lyfe Consulting Group. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Reveal Animation
+        const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+
+        const elementInView = (el, dividend = 1) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+            );
+        };
+        
+        const displayScrollElement = (element) => {
+            element.classList.add('visible');
+        };
+
+        const handleScrollAnimation = () => {
+            scrollRevealElements.forEach((el) => {
+                if (elementInView(el, 1.25)) {
+                    displayScrollElement(el);
+                }
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            handleScrollAnimation();
+        });
+
+        // Trigger for elements already in view on load
+        handleScrollAnimation();
+    </script>
+</body>
+</html>
