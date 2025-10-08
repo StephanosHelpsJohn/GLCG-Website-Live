@@ -21,6 +21,10 @@
     
     <!-- Custom Styles -->
     <style>
+        :root {
+            --accent-blue: #60A5FA;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #0A0917; /* Deep dark background */
@@ -69,6 +73,36 @@
         #mobile-menu {
             transition: transform 0.3s ease-in-out;
         }
+
+        #header-logo-container {
+            position: relative;
+        }
+        #header-logo-container::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80px; /* Increased size to better fit logo */
+            height: 80px; /* Increased size to better fit logo */
+            border: 2px solid var(--accent-blue);
+            border-radius: 50%;
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            animation: pulse-ring 4s infinite cubic-bezier(0.5, 0, 0, 1);
+            z-index: -1;
+        }
+
+        @keyframes pulse-ring {
+          0% {
+            transform: translate(-50%, -50%) scale(0.8);
+            opacity: 1;
+          }
+          100% {
+            transform: translate(-50%, -50%) scale(2.5);
+            opacity: 0;
+          }
+        }
+
     </style>
 </head>
 <body class="antialiased overflow-x-hidden">
@@ -78,9 +112,11 @@
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <!-- HEADER LOGO -->
             <div class="flex-1 flex justify-start">
-                <a href="#" class="flex items-center space-x-4">
-                     <img src='https://i.postimg.cc/PfbhmwLH/THE-GOOD-LYFE-CONSULTING-GROUP-White-No-Words-PNG.png' alt="GLC Logo Icon" class="h-16">
-                </a>
+                <div id="header-logo-container">
+                    <a href="#" class="flex items-center space-x-4">
+                         <img src='https://i.postimg.cc/PfbhmwLH/THE-GOOD-LYFE-CONSULTING-GROUP-White-No-Words-PNG.png' alt="GLC Logo Icon" class="h-16">
+                    </a>
+                </div>
             </div>
             
             <!-- Desktop Navigation -->
@@ -88,7 +124,7 @@
                 <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
                 <a href="#process" class="text-gray-300 hover:text-white transition-colors">Process</a>
                 <a href="#why-us" class="text-gray-300 hover:text-white transition-colors">Why Us</a>
-                <a href="privacy-policy.html" class="text-gray-300 hover:text-white transition-colors">Privacy Policy</a>
+                <a href="https://glcgroup.ai/privacy-policy.html" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white transition-colors">Privacy Policy</a>
             </nav>
 
              <div class="flex-1 flex justify-end">
@@ -111,7 +147,7 @@
             <a href="index.html" class="mobile-menu-link text-3xl font-bold text-white mb-8">Home</a>
             <a href="#process" class="mobile-menu-link text-3xl font-bold text-white mb-8">Process</a>
             <a href="#why-us" class="mobile-menu-link text-3xl font-bold text-white mb-8">Why Us</a>
-            <a href="privacy-policy.html" class="mobile-menu-link text-3xl font-bold text-white">Privacy Policy</a>
+            <a href="https://glcgroup.ai/privacy-policy.html" target="_blank" rel="noopener noreferrer" class="mobile-menu-link text-3xl font-bold text-white">Privacy Policy</a>
         </div>
     </div>
 
@@ -272,7 +308,7 @@
             <!-- FOOTER LOGO -->
             <img src='https://i.postimg.cc/J0zTDvDG/PNG-white-logo-fo-site.png' alt='GLC Logo with text' class="h-36">
             <p class="font-bold text-white">This Website was made in 3 hours by Stephanos, using AI.</p>
-            <p>&copy; 2024 The Good Lyfe Consulting Group. All Rights Reserved.</p>
+            <p>&copy; 2025 The Good Lyfe Consulting Group. All Rights Reserved.</p>
             <p class="text-gray-400">Contact Us At: <a href="mailto:about@glcgroup.ai" class="font-semibold text-indigo-400 hover:underline">about@glcgroup.ai</a></p>
         </div>
     </footer>
@@ -422,3 +458,4 @@
     </script>
 </body>
 </html>
+

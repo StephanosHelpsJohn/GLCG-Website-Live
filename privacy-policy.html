@@ -6,7 +6,7 @@
     <title>Privacy Policy | The Good Lyfe Consulting Group</title>
     
     <!-- Favicon -->
-    <link rel="icon" href="https://i.postimg.cc/FHZsYkRC/okay-purple-Hand-Back-White.png" type="image/png">
+    <link rel="icon" href="https://i.postimg.cc/bwsKFDvs/okay-purple-Hand-Back-White.png" type="image/png">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -14,106 +14,117 @@
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Custom Styles -->
     <style>
+        :root {
+            --accent-blue: #60A5FA;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0d0c1d; /* Core site dark background */
-            color: #e2e8f0; /* Core site light gray for text */
+            background-color: #0A0917;
+            color: #E0E0E0;
         }
-        .section-card {
-            background-color: #1a1a2e; /* Slightly lighter dark background for cards */
-            border-radius: 0.75rem; /* rounded-xl */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
-            padding: 2rem; /* p-8 */
-        }
-        .section-heading {
-            font-size: 2rem; /* text-3xl */
-            font-weight: 600; /* font-semibold */
-            color: #60a5fa; /* blue-400 for accent */
-            margin-bottom: 1.5rem;
-        }
-        .sub-section-heading {
-            font-size: 1.5rem; /* text-2xl */
-            font-weight: 500; /* font-medium */
-            color: #e2e8f0; /* text-white */
-            margin-bottom: 1rem;
-        }
-        .list-item-dot::before {
-            content: "•";
-            color: #8b5cf6; /* Purple dot, consistent with other dashboards */
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
-        }
-        strong {
-            color: #e2e8f0; /* White for strong text */
-        }
-        /* Custom prose-like styles for dark theme */
-        .custom-prose h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #e2e8f0; /* White */
-            margin-bottom: 1.5rem;
-        }
-        .custom-prose h2 {
-            font-size: 2rem;
-            font-weight: 600;
-            color: #60a5fa; /* Accent blue */
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-        .custom-prose h3 {
-            font-size: 1.5rem;
-            font-weight: 500;
-            color: #e2e8f0; /* White */
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-        }
-        .custom-prose p {
-            margin-bottom: 1rem;
-            line-height: 1.6;
-            color: #e2e8f0; /* Light gray */
-        }
-        .custom-prose ul {
-            list-style: none;
-            padding-left: 0;
-            margin-bottom: 1rem;
-        }
-        .custom-prose ul li {
+
+        #header-logo-container {
             position: relative;
-            padding-left: 1.5em;
-            margin-bottom: 0.5rem;
-            color: #e2e8f0; /* Light gray */
         }
-        .custom-prose ul li::before {
-            content: "•";
+        #header-logo-container::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--accent-blue);
+            border-radius: 50%;
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            animation: pulse-ring 4s infinite cubic-bezier(0.5, 0, 0, 1);
+            z-index: -1;
+        }
+
+        @keyframes pulse-ring {
+          0% {
+            transform: translate(-50%, -50%) scale(0.8);
+            opacity: 1;
+          }
+          100% {
+            transform: translate(-50%, -50%) scale(2.5);
+            opacity: 0;
+          }
+        }
+
+        .policy-card {
+            background-color: #1a1a2e;
+            border-radius: 0.75rem;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .policy-card h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1rem;
+        }
+
+        .policy-card h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #60a5fa;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .policy-card p, .policy-card ul {
+            color: #9ca3af;
+            font-size: 1.125rem;
+            line-height: 1.7;
+        }
+
+        .policy-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .policy-card li {
+            position: relative;
+            padding-left: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .policy-card li::before {
+            content: '✓';
             position: absolute;
             left: 0;
-            color: #8b5cf6; /* Purple dot */
-            font-weight: bold;
+            color: #8b5cf6;
+            font-weight: 600;
         }
-        .custom-prose a {
-            color: #60a5fa; /* Accent blue */
-            text-decoration: underline;
+        
+        /* Mobile Menu Transition */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
         }
-        .custom-prose a:hover {
-            color: #a78bfa; /* Lighter accent on hover */
-        }
+
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased overflow-x-hidden">
 
     <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-30 backdrop-blur-lg border-b border-gray-800">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-opacity-30 backdrop-blur-lg border-b border-gray-800">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <!-- HEADER LOGO -->
             <div class="flex-1 flex justify-start">
-                <a href="./index.html" class="flex items-center space-x-4">
-                    <img src='https://i.postimg.cc/PfbhmwLH/THE-GOOD-LYFE-CONSULTING-GROUP-White-No-Words-PNG.png' alt="GLC Logo Icon" class="h-16">
-                </a>
+                <div id="header-logo-container">
+                    <a href="index.html" class="flex items-center space-x-4">
+                         <img src='https://i.postimg.cc/PfbhmwLH/THE-GOOD-LYFE-CONSULTING-GROUP-White-No-Words-PNG.png' alt="GLC Logo Icon" class="h-16">
+                    </a>
+                </div>
             </div>
             
             <!-- Desktop Navigation -->
@@ -121,48 +132,93 @@
                 <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
                 <a href="index.html#process" class="text-gray-300 hover:text-white transition-colors">Process</a>
                 <a href="index.html#why-us" class="text-gray-300 hover:text-white transition-colors">Why Us</a>
-                <a href="privacy-policy.html" class="text-white font-semibold">Privacy Policy</a>
+                <a href="privacy-policy.html" class="text-white font-semibold border-b-2 border-indigo-500 pb-1">Privacy Policy</a>
             </nav>
+
+             <div class="flex-1 flex justify-end">
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
         </div>
     </header>
 
-    <main>
-        <div class="relative pt-40 pb-24">
-            <div class="container mx-auto px-6">
-                <article class="section-card max-w-4xl mx-auto custom-prose">
-                    <h1>GLC Privacy Policy</h1>
-                    
-                    <h2>Our Commitment to Your Data</h2>
-                    <p>At The Good Lyfe Consulting Group (GLC), our mission is to free humanity from the cycle of soul-shattering work by helping you operationalize AI. A core part of this mission is our commitment to your privacy and the security of your business's data. We believe in building trust through our actions and have designed our processes to be Egoless, meaning we're focused on your success, not on collecting your data.</p>
-                    
-                    <h2>The Data We Access</h2>
-                    <p>Our services involve connecting to your company's data sources to create powerful AI solutions and workflows. We do not care where your source of truth lives—we can connect into any system as needed to pull data.</p>
-                    
-                    <h2>How We Handle Your Data</h2>
-                    <ul>
-                        <li><strong>No Data Storage:</strong> We do not save or store your data on our servers. Our services are designed to process the information in place on your systems. This ensures your data remains under your control at all times.</li>
-                        <li><strong>Security:</strong> We maintain strict security protocols when accessing your systems. We work within your existing security framework to ensure that our access is limited, monitored, and fully aligned with your company's policies.</li>
-                        <li><strong>Purpose-Driven Access:</strong> We only access the specific data required to implement the AI strategies and workflows we've agreed upon. This could include visual data, operational logs, or other sources necessary to give your business a full picture of where it's headed.</li>
-                        <li><strong>No Third-Party Sharing:</strong> We will never share, sell, or distribute the data we access to any third parties.</li>
-                    </ul>
+    <!-- Mobile Menu (Hidden by default) -->
+    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-full bg-gray-900/95 backdrop-blur-sm z-50 transform translate-x-full">
+        <div class="flex flex-col items-center justify-center h-full">
+            <button id="close-menu-button" class="absolute top-8 right-8 text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <a href="index.html" class="mobile-menu-link text-3xl font-bold text-white mb-8">Home</a>
+            <a href="index.html#process" class="mobile-menu-link text-3xl font-bold text-white mb-8">Process</a>
+            <a href="index.html#why-us" class="mobile-menu-link text-3xl font-bold text-white mb-8">Why Us</a>
+            <a href="privacy-policy.html" class="mobile-menu-link text-3xl font-bold text-white">Privacy Policy</a>
+        </div>
+    </div>
 
-                    <h2>Contact Us</h2>
-                    <p>If you have any questions about this privacy policy or our data handling practices, please contact us.</p>
-                </article>
+    <main class="pt-40 pb-20">
+        <div class="container mx-auto px-6">
+            <div class="policy-card max-w-4xl mx-auto">
+                <h1>GLC Privacy Policy</h1>
+                
+                <h2>Our Commitment to Your Data</h2>
+                <p>At The Good Lyfe Consulting Group (GLC), our mission is to free humanity from the cycle of soul-shattering work by helping you operationalize AI. A core part of this mission is our commitment to your privacy and the security of your business's data. We believe in building trust through our actions and have designed our processes to be Egoless, meaning we're focused on your success, not on collecting your data.</p>
+                
+                <h2>The Data We Access</h2>
+                <p>Our services involve connecting to your company's data sources to create powerful AI solutions and workflows. We do not care where your source of truth lives—we can connect into any system as needed to pull data.</p>
+                
+                <h2>How We Handle Your Data</h2>
+                <ul>
+                    <li><strong>No Data Storage:</strong> We do not save or store your data on our servers. Our services are designed to process the information in place on your systems. This ensures your data remains under your control at all times.</li>
+                    <li><strong>Security:</strong> We maintain strict security protocols when accessing your systems. We work within your existing security framework to ensure that our access is limited, monitored, and fully aligned with your company's policies.</li>
+                    <li><strong>Purpose-Driven Access:</strong> We only access the specific data required to implement the AI strategies and workflows we've agreed upon. This could include visual data, operational logs, or other sources necessary to give your business a full picture of where it's headed.</li>
+                    <li><strong>No Third-Party Sharing:</strong> We will never share, sell, or distribute the data we access to any third parties.</li>
+                </ul>
+
+                <h2>Contact Us</h2>
+                <p>If you have any questions about this privacy policy or our data handling practices, please contact us.</p>
             </div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-transparent py-8">
+    <footer class="bg-gray-900 py-8">
         <div class="container mx-auto px-6 text-center text-gray-500 flex flex-col items-center space-y-6">
-            <!-- FOOTER LOGO (Using the white version for dark background) -->
+            <!-- FOOTER LOGO -->
             <img src='https://i.postimg.cc/J0zTDvDG/PNG-white-logo-fo-site.png' alt='GLC Logo with text' class="h-36">
             <p class="font-bold text-white">This Website was made in 3 hours by Stephanos, using AI.</p>
-            <p>&copy; 2024 The Good Lyfe Consulting Group. All Rights Reserved.</p>
-            <p class="text-gray-400">Contact Us At: <a href="mailto:about@glcgroup.ai" class="font-semibold text-blue-400 hover:underline">about@glcgroup.ai</a></p>
+            <p>&copy; 2025 The Good Lyfe Consulting Group. All Rights Reserved.</p>
+            <p class="text-gray-400">Contact Us At: <a href="mailto:about@glcgroup.ai" class="font-semibold text-indigo-400 hover:underline">about@glcgroup.ai</a></p>
         </div>
     </footer>
 
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+        function openMenu() {
+            if (mobileMenu) mobileMenu.classList.remove('translate-x-full');
+        }
+
+        function closeMenu() {
+            if (mobileMenu) mobileMenu.classList.add('translate-x-full');
+        }
+
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', openMenu);
+        }
+        if (closeMenuButton) {
+            closeMenuButton.addEventListener('click', closeMenu);
+        }
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+    </script>
 </body>
 </html>
