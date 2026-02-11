@@ -1,232 +1,406 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Good Lyfe Consulting Group | Operationalize AI</title>
     
-    <!-- Favicon (the icon in the browser tab) -->
+    <!-- Favicon -->
     <link rel="icon" href="https://i.postimg.cc/bwsKFDvs/okay-purple-Hand-Back-White.png" type="image/png">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Inter -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide-react@latest/dist/lucide-react.js"></script>
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#030303',
+                        violet: '#8B5CF6',
+                        cyan: '#06B6D4',
+                        emerald: '#10B981',
+                        offwhite: '#e5e5e5',
+                        graytext: '#a3a3a3',
+                    },
+                    fontFamily: {
+                        serif: ['"Instrument Serif"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    animation: {
+                        'spin-slow': 'spin 4s linear infinite',
+                        'ticker': 'ticker 40s linear infinite',
+                        'float': 'float 10s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        ticker: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: '0.5' },
+                            '50%': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     
-    <!-- Custom Styles -->
     <style>
-        :root {
-            --accent-blue: #60A5FA;
+        body {
+            background-color: #030303;
+            color: #d4d4d4;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0A0917; /* Deep dark background */
-            color: #E0E0E0; /* Light gray for text */
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-        .hero-gradient {
-            background: radial-gradient(circle at 50% 50%, rgba(58, 16, 151, 0.3) 0%, rgba(10, 9, 23, 0) 60%);
+        ::-webkit-scrollbar-track {
+            background: #030303;
         }
-        .accent-gradient-text {
-            background: linear-gradient(90deg, #4F46E5, #00A9FF);
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(139, 92, 246, 0.5);
+            box-shadow: 0 0 40px -10px rgba(139, 92, 246, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Text Shimmer */
+        .text-shimmer {
+            background: linear-gradient(90deg, #a78bfa 0%, #ffffff 40%, #ffffff 60%, #22d3ee 100%);
+            background-size: 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-        .cta-button {
-            transition: all 0.3s ease;
-        }
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.25);
-        }
-        .section {
-            padding: 8rem 1rem;
-        }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -30px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: #4F46E5;
-            border: 3px solid #0A0917;
-        }
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .scroll-reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* Mobile Menu Transition */
-        #mobile-menu {
-            transition: transform 0.3s ease-in-out;
+            animation: shimmer 5s infinite linear;
         }
 
-        #header-logo-container {
+        @keyframes shimmer {
+            0% { background-position: 100% center; }
+            100% { background-position: -100% center; }
+        }
+
+        /* Shiny Border Button */
+        .shiny-button-wrapper {
             position: relative;
+            border-radius: 9999px;
+            padding: 1px;
+            overflow: hidden;
+            display: inline-block;
         }
-        #header-logo-container::after {
+
+        .shiny-button-wrapper::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 80px; /* Increased size to better fit logo */
-            height: 80px; /* Increased size to better fit logo */
-            border: 2px solid var(--accent-blue);
-            border-radius: 50%;
-            opacity: 0;
-            transform: translate(-50%, -50%);
-            animation: pulse-ring 4s infinite cubic-bezier(0.5, 0, 0, 1);
-            z-index: -1;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent 0%, #8b5cf6 40%, #06b6d4 50%, transparent 60%);
+            animation: spin 4s linear infinite;
         }
 
-        @keyframes pulse-ring {
-          0% {
-            transform: translate(-50%, -50%) scale(0.8);
-            opacity: 1;
-          }
-          100% {
-            transform: translate(-50%, -50%) scale(2.5);
-            opacity: 0;
-          }
+        .shiny-button-content {
+            position: relative;
+            background: #0a0a0a;
+            border-radius: 9999px;
+            z-index: 10;
         }
 
+        /* Ticker Mask */
+        .ticker-mask {
+            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+        }
+
+        /* Code Syntax Highlighting Colors */
+        .code-keyword { color: #A78BFA; }
+        .code-string { color: #34D399; }
+        .code-class { color: #22D3EE; }
+        .code-comment { color: #9CA3AF; }
     </style>
 </head>
-<body class="antialiased overflow-x-hidden">
+<body class="selection:bg-violet-500/30 selection:text-violet-200">
 
-    <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-opacity-30 backdrop-blur-lg border-b border-gray-800">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- HEADER LOGO -->
-            <div class="flex-1 flex justify-start">
-                <div id="header-logo-container">
-                    <a href="#" class="flex items-center space-x-4">
-                         <img src='https://i.postimg.cc/PfbhmwLH/THE-GOOD-LYFE-CONSULTING-GROUP-White-No-Words-PNG.png' alt="GLC Logo Icon" class="h-16">
+    <!-- Ambient Background Orbs -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-violet-600/10 rounded-full blur-[120px] animate-float"></div>
+        <div class="absolute top-[40%] left-[-10%] w-[500px] h-[500px] bg-cyan-600/5 rounded-full blur-[100px] animate-float" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-violet-900/10 rounded-full blur-[120px] animate-float" style="animation-delay: 4s;"></div>
+    </div>
+
+    <!-- Hidden Checkbox for Mobile Menu Logic (Pure CSS) -->
+    <input type="checkbox" id="mobile-menu-toggle" class="peer hidden">
+
+    <!-- Floating Navigation Pill -->
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[98%] max-w-[900px] z-50 transition-all duration-300">
+        <div class="glass-panel rounded-full px-8 py-4 flex items-center justify-between shadow-2xl">
+            <!-- Logo - Large -->
+            <a href="#" class="flex items-center group gap-4">
+                <img src="https://i.postimg.cc/PfbhmwLH/THE-GOOD-LYFE-CONSULTING-GROUP-White-No-Words-PNG.png" alt="GLC" class="h-20 w-auto object-contain group-hover:scale-105 transition-transform drop-shadow-[0_0_15px_rgba(139,92,246,0.3)]">
+                <span class="font-serif text-3xl tracking-wide hidden sm:block text-white font-medium">GLC</span>
+            </a>
+
+            <!-- Links -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#process" class="text-sm uppercase tracking-widest text-neutral-300 hover:text-white hover:shadow-glow transition-all font-semibold">Process</a>
+                <a href="#services" class="text-sm uppercase tracking-widest text-neutral-300 hover:text-white hover:shadow-glow transition-all font-semibold">Services</a>
+                <a href="#why-us" class="text-sm uppercase tracking-widest text-neutral-300 hover:text-white hover:shadow-glow transition-all font-semibold">Why Us</a>
+                <a href="https://glcgroup.ai/privacy-policy.html" target="_blank" class="text-sm uppercase tracking-widest text-neutral-300 hover:text-white hover:shadow-glow transition-all font-semibold">Privacy Policy</a>
+            </div>
+            
+            <!-- Mobile Menu Trigger (Label triggers checkbox) -->
+            <label for="mobile-menu-toggle" class="md:hidden text-neutral-300 ml-auto hover:text-white transition-colors cursor-pointer">
+                <!-- Lucide Menu SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </label>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay (Controlled by Peer Checkbox) -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black/95 backdrop-blur-xl z-40 transform translate-x-full peer-checked:translate-x-0 transition-transform duration-300 flex flex-col items-center justify-center space-y-8">
+        <label for="mobile-menu-toggle" class="absolute top-8 right-8 text-neutral-400 hover:text-white cursor-pointer">
+            <!-- Lucide X SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </label>
+        <a href="#process" class="text-4xl font-serif text-neutral-200 hover:text-white transition-colors">Process</a>
+        <a href="#services" class="text-4xl font-serif text-neutral-200 hover:text-white transition-colors">Services</a>
+        <a href="#why-us" class="text-4xl font-serif text-neutral-200 hover:text-white transition-colors">Why Us</a>
+        <a href="https://glcgroup.ai/privacy-policy.html" target="_blank" class="text-4xl font-serif text-neutral-200 hover:text-white transition-colors">Privacy Policy</a>
+        <a href="#contact" class="text-4xl font-serif text-neutral-200 hover:text-white transition-colors">Contact</a>
+    </div>
+
+    <main class="relative z-10">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex flex-col items-center justify-center text-center px-4 pt-40 pb-20 relative">
+            <div class="max-w-6xl mx-auto space-y-10">
+                <!-- Eyebrow -->
+                <div>
+                    <span class="inline-block py-1.5 px-4 rounded-full border border-cyan-500/30 bg-cyan-900/10 text-xs uppercase tracking-[0.2em] text-cyan-300 font-bold mb-8 shadow-[0_0_20px_-5px_rgba(6,182,212,0.4)]">
+                        System Online
+                    </span>
+                </div>
+
+                <!-- Main Heading -->
+                <h1 class="font-serif text-6xl md:text-8xl lg:text-9xl leading-[0.9] tracking-tight text-white drop-shadow-2xl">
+                    Ditch Work's<br>
+                    <span class="text-neutral-500 italic">Drudgery.</span><br>
+                    <span class="text-shimmer font-medium">Operationalize AI.</span>
+                </h1>
+
+                <!-- Subtext -->
+                <p class="font-sans text-neutral-300 text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed font-light">
+                    The Good Lyfe Consulting Group redefines enterprise efficiency. We seamlessly integrate intelligence into your workforce.
+                </p>
+
+                <!-- Actions -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-8 mt-16">
+                    <!-- Shiny Border Button -->
+                    <a href="https://vimeo.com/1097685100" target="_blank" class="shiny-button-wrapper group cursor-pointer hover:scale-105 transition-transform duration-300">
+                        <div class="shiny-button-content px-10 py-5 flex items-center gap-4 bg-gray-900">
+                            <span class="text-white font-bold tracking-wide text-lg">Watch the System</span>
+                            <!-- Lucide Play SVG -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-violet-400 group-hover:scale-110 transition-transform"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        </div>
+                    </a>
+                    
+                    <a href="#services" class="text-neutral-400 hover:text-white transition-colors text-sm uppercase tracking-widest border-b border-transparent hover:border-white pb-1 font-semibold">
+                        Explore Modules
                     </a>
                 </div>
             </div>
-            
-            <!-- Desktop Navigation -->
-            <nav class="hidden md:flex items-center space-x-8">
-                <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
-                <a href="#process" class="text-gray-300 hover:text-white transition-colors">Process</a>
-                <a href="#why-us" class="text-gray-300 hover:text-white transition-colors">Why Us</a>
-                <a href="https://glcgroup.ai/privacy-policy.html" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white transition-colors">Privacy Policy</a>
-            </nav>
-
-             <div class="flex-1 flex justify-end">
-                <!-- Mobile Menu Button (Hidden) -->
-                <div class="hidden">
-                    <button id="mobile-menu-button" class="text-white focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Mobile Menu (Hidden by default) -->
-    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-full bg-gray-900/95 backdrop-blur-sm z-50 transform translate-x-full">
-        <div class="flex flex-col items-center justify-center h-full">
-            <button id="close-menu-button" class="absolute top-8 right-8 text-white focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-            <a href="index.html" class="mobile-menu-link text-3xl font-bold text-white mb-8">Home</a>
-            <a href="#process" class="mobile-menu-link text-3xl font-bold text-white mb-8">Process</a>
-            <a href="#why-us" class="mobile-menu-link text-3xl font-bold text-white mb-8">Why Us</a>
-            <a href="https://glcgroup.ai/privacy-policy.html" target="_blank" rel="noopener noreferrer" class="mobile-menu-link text-3xl font-bold text-white">Privacy Policy</a>
-        </div>
-    </div>
-
-
-    <main>
-        <!-- Hero Section -->
-        <section class="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
-            <div class="hero-gradient absolute inset-0"></div>
-            <canvas id="hero-canvas" class="absolute inset-0 w-full h-full opacity-50"></canvas>
-            <div class="relative z-10 p-6">
-                <h2 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4 scroll-reveal">
-                    Ditch Work's Drudgery.<br> <span class="accent-gradient-text">Supercharge Your Workforce with AI.</span>
-                </h2>
-                <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-300 mb-8 scroll-reveal" style="transition-delay: 200ms;">
-                    The Good Lyfe Consulting Group will help you frictionlessly implement the right AI solutions for your business, redefining how your employees use their time.
-                </p>
-            </div>
         </section>
 
-        <!-- Problem/Challenge Section -->
-        <section class="bg-gray-900/50 text-center section scroll-reveal">
-            <div class="container mx-auto px-6">
-                <h3 class="text-4xl font-bold mb-4">The World is Moving to AI—Are You Ready?</h3>
-                <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-12">Enterprises face new challenges in the age of AI. Turning them into opportunities is the key to leadership.</p>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-gray-800 p-8 rounded-xl border border-gray-700">
-                        <svg class="w-12 h-12 mx-auto mb-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9 9 0 0 1-9-9 9 9 0 0 1 9-9 9 9 0 0 1 9 9c0 2.38-1 4.54-2.6 6.01M12 21a9 9 0 0 0 9-9 9 9 0 0 0-9-9 9 9 0 0 0-9 9c0 2.38 1 4.54 2.6 6.01M12 21v-4M8 17l-1.5-1.5M16 17l1.5-1.5M12 3v4M8 7l-1.5 1.5M16 7l1.5 1.5"></path>
-                           <circle cx="12" cy="12" r="2" stroke-width="1.5"></circle>
-                           <path d="M12 8v-2m0 12v-2m4-4h2M4 12h2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
-                        </svg>
-                        <h4 class="text-xl font-semibold mb-2">Lack of In-House AI Expertise</h4>
-                        <p class="text-gray-400">The talent gap is real. We bridge it by acting as your dedicated AI strategy and implementation team.</p>
+        <!-- Metrics Ticker -->
+        <section class="border-y border-white/10 bg-black/60 backdrop-blur-md h-20 flex items-center overflow-hidden relative mb-32">
+            <div class="ticker-mask w-full">
+                <div class="flex animate-ticker whitespace-nowrap">
+                    <!-- Ticker Content -->
+                    <div class="flex items-center gap-20 px-8">
+                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">Efficiency Gain</span><span class="font-mono text-emerald-400 text-xl font-bold">45%</span></div>
+                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">Implementation</span><span class="font-mono text-cyan-400 text-xl font-bold">2 WEEKS</span></div>
+                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">Cost Reduction</span><span class="font-mono text-violet-400 text-xl font-bold">30%</span></div>
+                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">Status</span><span class="font-mono text-white text-xl font-bold">OPTIMIZED</span></div>
+                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">System</span><span class="font-mono text-emerald-400 text-xl font-bold">ACTIVE</span></div>
+                        <!-- Duplicates for loop -->
+                         <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">Efficiency Gain</span><span class="font-mono text-emerald-400 text-xl font-bold">45%</span></div>
+                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">Implementation</span><span class="font-mono text-cyan-400 text-xl font-bold">2 WEEKS</span></div>
+                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">Cost Reduction</span><span class="font-mono text-violet-400 text-xl font-bold">30%</span></div>
+                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">Status</span><span class="font-mono text-white text-xl font-bold">OPTIMIZED</span></div>
+                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">System</span><span class="font-mono text-emerald-400 text-xl font-bold">ACTIVE</span></div>
                     </div>
-                    <div class="bg-gray-800 p-8 rounded-xl border border-gray-700">
-                        <svg class="w-12 h-12 mx-auto mb-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        <h4 class="text-xl font-semibold mb-2">Rapid Innovation Pace</h4>
-                        <p class="text-gray-400">AI evolves daily. We keep you at the cutting edge, implementing the latest, most effective solutions.</p>
-                    </div>
-                    <div class="bg-gray-800 p-8 rounded-xl border border-gray-700">
-                       <svg class="w-12 h-12 mx-auto mb-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                        <h4 class="text-xl font-semibold mb-2">Data Governance & Security</h4>
-                        <p class="text-gray-400">We build with a security-first mindset, ensuring your custom AI solutions are robust and compliant.</p>
+                     <div class="flex items-center gap-20 px-8">
+                         <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">Efficiency Gain</span><span class="font-mono text-emerald-400 text-xl font-bold">45%</span></div>
+                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">Implementation</span><span class="font-mono text-cyan-400 text-xl font-bold">2 WEEKS</span></div>
+                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">Cost Reduction</span><span class="font-mono text-violet-400 text-xl font-bold">30%</span></div>
+                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">Status</span><span class="font-mono text-white text-xl font-bold">OPTIMIZED</span></div>
+                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">System</span><span class="font-mono text-emerald-400 text-xl font-bold">ACTIVE</span></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- What We Do Section -->
-        <section id="services" class="section text-center scroll-reveal">
-            <div class="container mx-auto px-6">
-                 <h3 class="text-4xl font-bold mb-4">Transforming Challenges into Competitive Advantages</h3>
-                <p class="text-lg text-gray-400 max-w-3xl mx-auto mb-16">We build enterprise-first AI solutions that drive real business impact by integrating seamlessly into how you already work.</p>
-                <div class="grid md:grid-cols-3 gap-12 text-left">
-                    <div class="flex items-start space-x-4">
-                        <div class="flex-shrink-0 bg-indigo-600/20 text-indigo-300 p-3 rounded-full">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+        <!-- Feature Grid (Challenges) -->
+        <section id="why-us" class="container mx-auto px-6 mb-32">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl md:text-5xl text-white mb-6">The Current State</h2>
+                <p class="text-neutral-300 text-lg max-w-2xl mx-auto font-light">Enterprises face new vectors of complexity. We turn them into competitive advantages.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card rounded-[32px] p-10 group bg-neutral-900/40">
+                    <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-violet-500/20 transition-colors border border-white/5">
+                        <!-- Lucide CPU SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-neutral-300 group-hover:text-violet-300 transition-colors"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>
+                    </div>
+                    <h3 class="font-serif text-3xl mb-4 text-white">Talent Deficit</h3>
+                    <p class="text-neutral-400 leading-relaxed text-base font-light">The AI talent gap is widening. We bridge it by acting as your dedicated neural architecture team, deploying instant expertise.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card rounded-[32px] p-10 group bg-neutral-900/40">
+                    <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-cyan-500/20 transition-colors border border-white/5">
+                        <!-- Lucide Zap SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-neutral-300 group-hover:text-cyan-300 transition-colors"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <h3 class="font-serif text-3xl mb-4 text-white">Velocity</h3>
+                    <p class="text-neutral-400 leading-relaxed text-base font-light">Innovation cycles are now measured in days. We keep your stack bleeding-edge, implementing updates before the market reacts.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card rounded-[32px] p-10 group bg-neutral-900/40">
+                    <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-emerald-500/20 transition-colors border border-white/5">
+                        <!-- Lucide Shield Check SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-neutral-300 group-hover:text-emerald-300 transition-colors"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+                    </div>
+                    <h3 class="font-serif text-3xl mb-4 text-white">Governance</h3>
+                    <p class="text-neutral-400 leading-relaxed text-base font-light">Security is not an afterthought. We build fortified environments where data sovereignty and compliance are immutable.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Code Block / Services Section -->
+        <section id="services" class="container mx-auto px-6 mb-32">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Content -->
+                <div>
+                    <h2 class="font-serif text-4xl md:text-5xl text-white mb-10">Seamless Integration Protocols</h2>
+                    <div class="space-y-10">
+                        <div class="flex gap-8 group">
+                            <div class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center flex-shrink-0 group-hover:border-violet-500/80 transition-colors bg-white/5">
+                                <span class="font-mono text-violet-300 text-xl font-bold">01</span>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl text-white mb-3 font-medium">Frictionless Adoption</h4>
+                                <p class="text-neutral-300 text-base leading-relaxed font-light">AI should adapt to you. We inject intelligence directly into your existing ERP and CRM layers.</p>
+                            </div>
                         </div>
-                        <div>
-                            <h4 class="text-xl font-semibold mb-2">Frictionless Adoption</h4>
-                            <p class="text-gray-400">AI should adapt to you, not the other way around. We integrate powerful AI tools directly into your existing software and workflows for immediate uptake.</p>
+                        <div class="flex gap-8 group">
+                            <div class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center flex-shrink-0 group-hover:border-cyan-500/80 transition-colors bg-white/5">
+                                <span class="font-mono text-cyan-300 text-xl font-bold">02</span>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl text-white mb-3 font-medium">Role-Based Intelligence</h4>
+                                <p class="text-neutral-300 text-base leading-relaxed font-light">From C-Suite to support, we democratize access by building custom agents for every function.</p>
+                            </div>
+                        </div>
+                         <div class="flex gap-8 group">
+                            <div class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center flex-shrink-0 group-hover:border-emerald-500/80 transition-colors bg-white/5">
+                                <span class="font-mono text-emerald-400 text-xl font-bold">03</span>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl text-white mb-3 font-medium">Automated Drudgery</h4>
+                                <p class="text-neutral-300 text-base leading-relaxed font-light">Eliminate repetitive tasks. Free your human capital to focus on creative and strategic synthesis.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- New 4th Bullet Point -->
+                        <div class="flex gap-8 group">
+                            <div class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center flex-shrink-0 group-hover:border-violet-500/80 transition-colors bg-white/5">
+                                <span class="font-mono text-violet-300 text-xl font-bold">04</span>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl text-white mb-3 font-medium">Create agents (including ClawBots)</h4>
+                                <p class="text-neutral-300 text-base leading-relaxed font-light">Clean, secure AI deployment that helps you move faster and stay protected. Check out our pricing <a href="https://www.atxclaw.com/v3#pricing" target="_blank" class="text-violet-400 hover:text-white underline decoration-violet-500/50 hover:decoration-white transition-all">here</a>.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="flex-shrink-0 bg-indigo-600/20 text-indigo-300 p-3 rounded-full">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                </div>
+
+                <!-- Right Code Block -->
+                <div>
+                    <div class="glass-panel rounded-2xl overflow-hidden border border-white/20 shadow-2xl">
+                        <!-- Toolbar -->
+                        <div class="bg-neutral-900/90 px-6 py-4 flex items-center justify-between border-b border-white/10">
+                            <div class="flex gap-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <span class="font-mono text-sm text-neutral-400 font-medium">integration_config.js</span>
+                            <!-- Lucide Copy SVG -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-neutral-400 hover:text-white cursor-pointer"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
                         </div>
-                        <div>
-                            <h4 class="text-xl font-semibold mb-2">AI for Every Role</h4>
-                            <p class="text-gray-400">From sales and marketing to HR and finance, we democratize AI by building custom solutions that empower every function in your organization.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="flex-shrink-0 bg-indigo-600/20 text-indigo-300 p-3 rounded-full">
-                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        </div>
-                        <div>
-                            <h4 class="text-xl font-semibold mb-2">Automate the Boring Stuff</h4>
-                            <p class="text-gray-400">Free your team from repetitive, low-value tasks. Let them focus on strategic work and what they do best—being creative, innovative, and human.</p>
+                        <!-- Code Content -->
+                        <div class="p-8 overflow-x-auto bg-[#080808]">
+                            <pre class="font-mono text-sm leading-loose text-neutral-300">
+<span class="code-keyword">const</span> <span class="code-class">GLC_System</span> = <span class="code-keyword">require</span>(<span class="code-string">'@glc/core'</span>);
+
+<span class="code-comment">// Initialize Enterprise AI Layer</span>
+<span class="code-keyword">async function</span> <span class="code-class">operationalize</span>() {
+  <span class="code-keyword">const</span> config = {
+    mode: <span class="code-string">'autonomous'</span>,
+    security: <span class="code-string">'enterprise-grade'</span>,
+    modules: [<span class="code-string">'HR'</span>, <span class="code-string">'Sales'</span>, <span class="code-string">'Ops'</span>]
+  };
+
+  <span class="code-comment">// Deploy Custom Agents</span>
+  <span class="code-keyword">await</span> GLC_System.<span class="code-class">deploy</span>(config);
+  
+  <span class="code-keyword">return</span> {
+    status: <span class="code-string">'optimized'</span>,
+    efficiency: <span class="code-string">'+400%'</span>
+  };
+}</pre>
                         </div>
                     </div>
                 </div>
@@ -234,228 +408,122 @@
         </section>
 
         <!-- Process Section -->
-        <section id="process" class="section bg-gray-900/50 scroll-reveal">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h3 class="text-4xl font-bold mb-4">Your Seamless AI Transformation Journey</h3>
-                    <p class="text-lg text-gray-400 max-w-2xl mx-auto">A clear, collaborative process designed to deliver tangible results quickly and efficiently.</p>
+        <section id="process" class="container mx-auto px-6 mb-32">
+             <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl md:text-5xl text-white mb-6">Transformation Sequence</h2>
+            </div>
+            
+            <div class="relative max-w-4xl mx-auto">
+                <!-- Timeline Line -->
+                <div class="absolute left-[27px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-violet-500/0 via-violet-500/60 to-violet-500/0 md:left-1/2 md:-ml-[1px]"></div>
+
+                <!-- Step 1 -->
+                <div class="relative mb-20 md:grid md:grid-cols-2 md:gap-16">
+                    <div class="hidden md:block text-right">
+                        <h3 class="font-serif text-3xl text-white mb-2">Audit & Discovery</h3>
+                        <p class="text-neutral-300 text-base font-light">Deep dive into operations to identify remedial tasks ripe for automation.</p>
+                    </div>
+                    <div class="absolute left-0 md:left-1/2 -ml-[28px] md:-ml-[28px] flex items-center justify-center">
+                        <div class="w-14 h-14 rounded-full bg-[#030303] border-2 border-violet-500/30 flex items-center justify-center z-10 shadow-[0_0_20px_-5px_#8b5cf6] bg-black">
+                            <span class="font-mono text-violet-300 font-bold text-lg">01</span>
+                        </div>
+                    </div>
+                    <div class="pl-24 md:hidden">
+                        <h3 class="font-serif text-3xl text-white mb-2">Audit & Discovery</h3>
+                        <p class="text-neutral-300 text-base font-light">Deep dive into operations to identify remedial tasks ripe for automation.</p>
+                    </div>
                 </div>
-                <div class="relative max-w-2xl mx-auto">
-                    <div class="absolute left-0 h-full border-l-2 border-dashed border-gray-700" style="left: -30px;"></div>
-                    <div class="space-y-16">
-                        <div class="relative pl-8 timeline-item">
-                            <h4 class="text-2xl font-semibold mb-2">1. Workflow Audit & Discovery</h4>
-                            <p class="text-gray-400">We dive deep into your operations to identify the most impactful opportunities for AI automation—the repeatable, remedial tasks ripe for transformation.</p>
+
+                <!-- Step 2 -->
+                <div class="relative mb-20 md:grid md:grid-cols-2 md:gap-16">
+                    <div class="pl-24 md:pl-0 md:col-start-2">
+                        <h3 class="font-serif text-3xl text-white mb-2">Architectural Plan</h3>
+                        <p class="text-neutral-300 text-base font-light">No boilerplate. We design a bespoke neural fabric tailored to your stack.</p>
+                    </div>
+                    <div class="absolute left-0 md:left-1/2 -ml-[28px] md:-ml-[28px] flex items-center justify-center">
+                        <div class="w-14 h-14 rounded-full bg-[#030303] border-2 border-cyan-500/30 flex items-center justify-center z-10 shadow-[0_0_20px_-5px_#06b6d4] bg-black">
+                            <span class="font-mono text-cyan-300 font-bold text-lg">02</span>
                         </div>
-                        <div class="relative pl-8 timeline-item">
-                            <h4 class="text-2xl font-semibold mb-2">2. Custom AI Integration Plan</h4>
-                            <p class="text-gray-400">No one-size-fits-all solutions. We design a tailored AI strategy and architecture that aligns with your specific goals and existing systems.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative mb-20 md:grid md:grid-cols-2 md:gap-16">
+                    <div class="hidden md:block text-right">
+                        <h3 class="font-serif text-3xl text-white mb-2">Deploy & Operationalize</h3>
+                        <p class="text-neutral-300 text-base font-light">Full implementation and training. We ensure effortless adoption from Day Zero.</p>
+                    </div>
+                    <div class="absolute left-0 md:left-1/2 -ml-[28px] md:-ml-[28px] flex items-center justify-center">
+                        <div class="w-14 h-14 rounded-full bg-[#030303] border-2 border-emerald-500/30 flex items-center justify-center z-10 shadow-[0_0_20px_-5px_#10b981] bg-black">
+                            <span class="font-mono text-emerald-400 font-bold text-lg">03</span>
                         </div>
-                        <div class="relative pl-8 timeline-item">
-                            <h4 class="text-2xl font-semibold mb-2">3. Launch, Train & Operationalize</h4>
-                            <p class="text-gray-400">We handle the full implementation and provide comprehensive training to ensure your teams can leverage their new AI tools effortlessly from day one.</p>
-                        </div>
-                        <div class="relative pl-8 timeline-item">
-                            <h4 class="text-2xl font-semibold mb-2">4. Ongoing Support & Innovation</h4>
-                            <p class="text-gray-400">AI isn't a one-time project. We provide continuous support and proactively identify new opportunities to create automations that drive value.</p>
-                        </div>
+                    </div>
+                    <div class="pl-24 md:hidden">
+                        <h3 class="font-serif text-3xl text-white mb-2">Deploy & Operationalize</h3>
+                        <p class="text-neutral-300 text-base font-light">Full implementation and training. We ensure effortless adoption from Day Zero.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Why Choose Us Section -->
-        <section id="why-us" class="section text-center scroll-reveal">
-            <div class="container mx-auto px-6">
-                <h3 class="text-4xl font-bold mb-4">Operationalize AI, Don't Just Talk About It.</h3>
-                <p class="text-lg text-gray-400 max-w-3xl mx-auto mb-16">We're not just consultants; we're builders and partners in your success.</p>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="bg-gray-800 p-8 rounded-lg border border-gray-700">
-                        <h4 class="text-xl font-semibold mb-2">Proven Expertise</h4>
-                        <p class="text-gray-400">Led by talent with experience at Meta, we bring world-class AI development to your business.</p>
-                    </div>
-                    <div class="bg-gray-800 p-8 rounded-lg border border-gray-700">
-                        <h4 class="text-xl font-semibold mb-2">Tangible Savings</h4>
-                        <p class="text-gray-400">Our core promise: custom workflows that save your team hours every single week.</p>
-                    </div>
-                    <div class="bg-gray-800 p-8 rounded-lg border border-gray-700">
-                        <h4 class="text-xl font-semibold mb-2">Employee Empowerment</h4>
-                        <p class="text-gray-400">Boost morale and output by letting your team focus on work they actually enjoy.</p>
-                    </div>
-                    <div class="bg-gray-800 p-8 rounded-lg border border-gray-700">
-                        <h4 class="text-xl font-semibold mb-2">Custom & Secure</h4>
-                        <p class="text-gray-400">Secure, compliant, and easy-to-use solutions built specifically for your enterprise needs.</p>
-                    </div>
+        <!-- CTA Section -->
+        <section id="contact" class="container mx-auto px-6 mb-32 text-center">
+            <div class="glass-card rounded-[40px] p-16 relative overflow-hidden border border-white/20">
+                <div class="absolute inset-0 bg-gradient-to-r from-violet-900/30 to-cyan-900/30"></div>
+                <div class="relative z-10">
+                    <h2 class="font-serif text-5xl md:text-7xl text-white mb-8">Ready to Supercharge?</h2>
+                    <p class="text-neutral-300 mb-12 text-xl max-w-2xl mx-auto font-light">Operationalize AI. Don't just talk about it.</p>
+                    <a href="mailto:about@glcgroup.ai" class="shiny-button-wrapper group cursor-pointer inline-block hover:scale-105 transition-transform duration-300">
+                        <div class="shiny-button-content px-12 py-6 bg-white group-hover:bg-gray-100 transition-colors">
+                            <span class="text-black font-extrabold tracking-widest uppercase text-lg">Initiate Contact</span>
+                        </div>
+                    </a>
                 </div>
-            </div>
-        </section>
-
-        <!-- CTA / Demo Button Secton -->
-        <section id="contact" class="section bg-indigo-900/20 scroll-reveal">
-            <div class="container mx-auto px-6 text-center">
-                <h3 class="text-4xl font-bold text-white mb-4">Ready to Supercharge Your Workforce?</h3>
-                <p class="text-lg text-gray-300 mb-8">Let's talk about how we can transform your business with custom AI.</p>
-                <a href="https://vimeo.com/1097685100" target="_blank" rel="noopener noreferrer" class="cta-button inline-block bg-indigo-600 text-white font-bold py-4 px-10 text-lg rounded-lg shadow-xl hover:bg-indigo-500">
-                    Watch The AI Magic
-                </a>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 py-8">
-        <div class="container mx-auto px-6 text-center text-gray-500 flex flex-col items-center space-y-6">
-            <!-- FOOTER LOGO -->
-            <img src='https://i.postimg.cc/J0zTDvDG/PNG-white-logo-fo-site.png' alt='GLC Logo with text' class="h-36">
-            <p class="font-bold text-white">This Website was made in 3 hours by Stephanos, using AI.</p>
-            <p>&copy; 2025 The Good Lyfe Consulting Group. All Rights Reserved.</p>
-            <p class="text-gray-400">Contact Us At: <a href="mailto:Stephanos@glcgroup.ai" class="font-semibold text-indigo-400 hover:underline">about@glcgroup.ai</a></p>
+    <footer class="border-t border-white/10 bg-[#050505] pt-20 pb-10">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div class="col-span-1 md:col-span-2">
+                    <img src="https://i.postimg.cc/PfbhmwLH/THE-GOOD-LYFE-CONSULTING-GROUP-White-No-Words-PNG.png" class="h-24 mb-6 opacity-100" alt="GLC Logo">
+                    <p class="text-neutral-400 max-w-sm text-sm leading-relaxed">Redefining the modern workforce through intelligent automation and strategic foresight.</p>
+                </div>
+                
+                <!-- Links -->
+                <div>
+                    <h4 class="text-xs uppercase tracking-[0.2em] text-white font-bold mb-6">Coordinates</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-neutral-400 hover:text-violet-300 text-sm transition-colors">Home</a></li>
+                        <li><a href="#process" class="text-neutral-400 hover:text-violet-300 text-sm transition-colors">Process</a></li>
+                        <li><a href="#services" class="text-neutral-400 hover:text-violet-300 text-sm transition-colors">Services</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Legal -->
+                <div>
+                    <h4 class="text-xs uppercase tracking-[0.2em] text-white font-bold mb-6">Legal</h4>
+                    <ul class="space-y-4">
+                        <li><a href="https://glcgroup.ai/privacy-policy.html" class="text-neutral-400 hover:text-cyan-300 text-sm transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="flex flex-col md:flex-row justify-between items-center border-t border-white/10 pt-8 gap-4">
+                <p class="text-neutral-500 text-xs">&copy; 2026 The Good Lyfe Consulting Group.</p>
+                <div class="flex items-center gap-3">
+                    <div class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </div>
+                    <span class="text-emerald-400 text-xs font-mono uppercase tracking-widest font-bold">All Systems Operational</span>
+                </div>
+            </div>
         </div>
     </footer>
-
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const closeMenuButton = document.getElementById('close-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
-
-        function openMenu() {
-            if (mobileMenu) mobileMenu.classList.remove('translate-x-full');
-        }
-
-        function closeMenu() {
-            if (mobileMenu) mobileMenu.classList.add('translate-x-full');
-        }
-
-        if (mobileMenuButton) {
-            mobileMenuButton.addEventListener('click', openMenu);
-        }
-        if (closeMenuButton) {
-            closeMenuButton.addEventListener('click', closeMenu);
-        }
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
-
-
-        // Hero Canvas Animation
-        const canvas = document.getElementById('hero-canvas');
-        if (canvas) {
-            const ctx = canvas.getContext('2d');
-            let particles = [];
-
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-
-            class Particle {
-                constructor() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height;
-                    this.size = Math.random() * 2 + 1;
-                    this.speedX = Math.random() * 2 - 1;
-                    this.speedY = Math.random() * 2 - 1;
-                    this.color = `rgba(79, 70, 229, ${Math.random()})`;
-                }
-
-                update() {
-                    this.x += this.speedX;
-                    this.y += this.speedY;
-
-                    if (this.size > 0.1) this.size -= 0.01;
-                    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-                    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-                }
-
-                draw() {
-                    ctx.fillStyle = this.color;
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-            }
-
-            function initParticles() {
-                particles = [];
-                let numberOfParticles = (canvas.width * canvas.height) / 9000;
-                for (let i = 0; i < numberOfParticles; i++) {
-                    particles.push(new Particle());
-                }
-            }
-
-            function animateParticles() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                for (let i = 0; i < particles.length; i++) {
-                    particles[i].update();
-                    particles[i].draw();
-                }
-                connectParticles();
-                requestAnimationFrame(animateParticles);
-            }
-
-            function connectParticles() {
-                let opacityValue = 1;
-                for (let a = 0; a < particles.length; a++) {
-                    for (let b = a; b < particles.length; b++) {
-                        let distance = Math.sqrt(
-                            Math.pow(particles[a].x - particles[b].x, 2) +
-                            Math.pow(particles[a].y - particles[b].y, 2)
-                        );
-                        if (distance < 100) {
-                            opacityValue = 1 - (distance / 100);
-                            ctx.strokeStyle = `rgba(79, 70, 229, ${opacityValue})`;
-                            ctx.lineWidth = 1;
-                            ctx.beginPath();
-                            ctx.moveTo(particles[a].x, particles[a].y);
-                            ctx.lineTo(particles[b].x, particles[b].y);
-                            ctx.stroke();
-                        }
-                    }
-                }
-            }
-            
-            window.addEventListener('resize', () => {
-                resizeCanvas();
-                initParticles();
-            });
-            
-            resizeCanvas();
-            initParticles();
-            animateParticles();
-        }
-
-        // Scroll Reveal Animation
-        const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
-
-        const elementInView = (el, dividend = 1) => {
-            const elementTop = el.getBoundingClientRect().top;
-            return (
-                elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
-            );
-        };
-        
-        const displayScrollElement = (element) => {
-            element.classList.add('visible');
-        };
-
-        const handleScrollAnimation = () => {
-            scrollRevealElements.forEach((el) => {
-                if (elementInView(el, 1.25)) {
-                    displayScrollElement(el);
-                }
-            });
-        }
-
-        window.addEventListener('scroll', () => {
-            handleScrollAnimation();
-        });
-
-        // Trigger for elements already in view on load
-        handleScrollAnimation();
-
-    </script>
 </body>
 </html>
-
