@@ -18,17 +18,9 @@
         }));
     }
 
-    // Film: phones in low power or data saver mode block autoplay; offer a play button instead
+    // Film: autoplays on a silent loop; a tap starts it if a phone held it back
     const film = document.querySelector(".film video");
-    const playBtn = document.querySelector(".film-play");
-    if (film && playBtn) {
-        const start = () => film.play().then(() => { playBtn.hidden = true; }).catch(() => { playBtn.hidden = false; });
-        playBtn.addEventListener("click", start);
-        film.addEventListener("click", () => { if (film.paused) start(); });
-        film.addEventListener("playing", () => { playBtn.hidden = true; });
-        if (reduce) { film.pause(); playBtn.hidden = false; }
-        else start();
-    }
+    if (film) film.addEventListener("click", () => { if (film.paused) film.play().catch(() => {}); });
 
     // Operations graph: systems send data into the agent layer, it writes back into another
     // system and the thing it created lands in the feed.

@@ -304,13 +304,6 @@ h1 em, h2 em { color: var(--dim); }
 /* ---------- film ---------- */
 .film { position: relative; border: 1px solid var(--line-strong); border-radius: 24px; overflow: hidden; background: #000; box-shadow: 0 40px 120px -40px rgba(139, 92, 246, 0.45); }
 .film video { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
-.film-play {
-    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 2;
-    display: inline-flex; align-items: center; gap: 10px; cursor: pointer;
-    font: 500 0.95rem/1 var(--sans); color: var(--ink); background: var(--text);
-    border: 0; border-radius: 999px; padding: 15px 22px; box-shadow: 0 10px 40px -10px rgba(139, 92, 246, 0.8);
-}
-.film-play svg { width: 16px; height: 16px; }
 .film-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 16px; font: 400 0.78rem/1.4 var(--mono); color: var(--faint); letter-spacing: 0.06em; }
 
 /* ---------- current state ---------- */
