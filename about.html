@@ -2,196 +2,137 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>About | The Good Lyfe Consulting Group</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Inter -->
+    <meta name="description" content="The Good Lyfe Consulting Group was founded by Stephan Nicklow to free people from the worst parts of their jobs by operationalizing AI.">
+    <link rel="icon" href="assets/favicon.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Custom Styles -->
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0A0917; /* Deep dark background */
-            color: #E0E0E0; /* Light gray for text */
-        }
-        .hero-gradient {
-            background: radial-gradient(circle at 50% 50%, rgba(58, 16, 151, 0.3) 0%, rgba(10, 9, 23, 0) 60%);
-        }
-        .accent-gradient-text {
-            background: linear-gradient(90deg, #4F46E5, #00A9FF);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .section {
-            padding: 8rem 1rem;
-        }
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .scroll-reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/site.css">
 </head>
-<body class="antialiased">
+<body>
+    <div class="orbs" aria-hidden="true"><span></span><span></span><span></span></div>
 
-    <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-opacity-30 backdrop-blur-lg border-b border-gray-800">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- HEADER LOGO (Icon + Text) -->
-            <a href="index.html" class="flex items-center space-x-4">
-                 <img src='https://i.postimg.cc/Jhpvpzmf/THE-GOOD-LYFE-CONSULTING-GROUP-White-No-Words-PNG.png' alt="GLC Logo Icon" class="h-16">
-            </a>
-            <nav class="hidden md:flex items-center space-x-8">
-                <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
-                <a href="about.html" class="text-white font-semibold">About</a>
-                <a href="index.html#process" class="text-gray-300 hover:text-white transition-colors">Process</a>
-                <a href="index.html#why-us" class="text-gray-300 hover:text-white transition-colors">Why Us</a>
-            </nav>
+    <nav class="nav" aria-label="Main">
+        <a href="index.html" class="brand" aria-label="The Good Lyfe Consulting Group home">
+            <img src="assets/glc-mark.png" alt="">
+            <span>GLC<small>Good Lyfe Consulting</small></span>
+        </a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+        <div class="nav-links" id="nav-links">
+            <a href="index.html#capabilities">Capabilities</a>
+            <a href="index.html#executive-search">Executive Search</a>
+            <a href="index.html#process">Process</a>
+            <a href="about.html" aria-current="page">About</a>
+            <a href="mailto:about@glcgroup.ai" class="btn btn-solid btn-sm nav-cta">Talk to us</a>
         </div>
-    </header>
+    </nav>
 
     <main>
-        <!-- Hero Section -->
-        <section class="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
-            <div class="hero-gradient absolute inset-0"></div>
-            <div class="relative z-10 p-6">
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-4 scroll-reveal">
-                    About <span class="accent-gradient-text">Us</span>
-                </h1>
-                <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-300 mb-8 scroll-reveal" style="transition-delay: 200ms;">
-                    Learn more about The Good Lyfe Consulting Group and our mission to transform businesses through AI.
-                </p>
+        <header class="section" style="padding-top:clamp(140px,16vw,200px)">
+            <div class="wrap">
+                <span class="status rise"><span class="dot"></span>About GLC</span>
+                <h1 class="rise" style="--d:.08s;font-size:var(--step-4);margin-top:22px;max-width:16ch">Built to give people <em class="shimmer">their time back.</em></h1>
+                <p class="lede rise" style="--d:.16s;margin-top:26px">We take the worst parts of the job off people's plates, so they can spend their hours on the work they actually love.</p>
             </div>
-        </section>
+        </header>
 
-        <!-- About Content Section -->
-        <section class="section scroll-reveal">
-            <div class="container mx-auto px-6 max-w-4xl">
-                <div class="bg-gray-800 p-8 rounded-xl border border-gray-700">
-                    <h2 class="text-3xl font-bold mb-6">Our Story</h2>
-                    <div class="prose prose-invert max-w-none">
-                        <p class="text-gray-300 text-lg mb-6">
-                            The Good Lyfe Consulting Group was founded with a simple yet powerful vision: to make AI accessible and transformative for businesses of all sizes.
-                        </p>
-                        <p class="text-gray-300 text-lg mb-6">
-                            [Add your company story here - when it was founded, what inspired its creation, your mission, and what sets you apart in the AI consulting space.]
-                        </p>
-                        <p class="text-gray-300 text-lg mb-6">
-                            [You can add more paragraphs about your company values, approach to client partnerships, and commitment to delivering measurable results.]
-                        </p>
+        <section id="founder" class="section" style="padding-top:0">
+            <div class="wrap founder">
+                <figure class="portrait" style="margin:0">
+                    <img src="assets/stephan.jpg" alt="Stephan Nicklow, founder and CEO of The Good Lyfe Consulting Group">
+                    <figcaption>STEPHAN NICKLOW / FOUNDER &amp; CEO</figcaption>
+                </figure>
+                <div style="display:grid;gap:22px;min-width:0">
+                    <span class="label">Founder &amp; CEO</span>
+                    <h2 style="font-size:var(--step-3)">Stephan Nicklow</h2>
+                    <div class="bio">
+                        <p>Stephan founded The Good Lyfe Consulting Group in 2019 with one goal: free people from soul-shattering work. Too many talented people lose their weeks to copy-paste tasks, status reports and manual handoffs.</p>
+                        <p>Over the years GLC has run alongside the rest of his career. He worked in Big Tech at Meta, where he led Trust Strategy for the Metaverse, built and scaled platforms at 100M+ scale, and co-founded <a href="https://gamerplug.app" target="_blank" rel="noopener">Gamerplug</a>, an app that helps gamers find their people, where he is still CEO.</p>
+                        <p>Now AI can finally do the work GLC was founded to eliminate, and GLC is front and center again. Stephan builds with generative AI every day and brings the same approach to every client: start with the people, find the work that drains them, and automate it inside the company, not just talk about it in meetings.</p>
                     </div>
+                    <dl class="facts">
+                        <div><dt>Big Tech</dt><dd>Ex-Meta, Trust Strategy</dd></div>
+                        <div><dt>Scale</dt><dd>Platforms at 100M+</dd></div>
+                        <div><dt>Builder</dt><dd>Generative AI</dd></div>
+                    </dl>
                 </div>
             </div>
         </section>
 
-        <!-- Mission & Values Section -->
-        <section class="section bg-gray-900/50 scroll-reveal">
-            <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold mb-12 text-center">Our Mission & Values</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
-                        <h3 class="text-xl font-semibold mb-3">Innovation First</h3>
-                        <p class="text-gray-400">We stay at the cutting edge of AI technology to deliver the most effective solutions for our clients.</p>
-                    </div>
-                    <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
-                        <h3 class="text-xl font-semibold mb-3">Human-Centered AI</h3>
-                        <p class="text-gray-400">Our AI solutions enhance human capabilities rather than replace them, creating better work experiences.</p>
-                    </div>
-                    <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
-                        <h3 class="text-xl font-semibold mb-3">Measurable Impact</h3>
-                        <p class="text-gray-400">Every solution we implement is designed to deliver tangible, measurable results for your business.</p>
-                    </div>
+        <section id="story" class="section">
+            <div class="wrap story">
+                <div class="head" style="margin:0">
+                    <span class="label">Our story</span>
+                    <h2>Big platforms want your data. <em>We go to it.</em></h2>
+                </div>
+                <div class="body">
+                    <p>Big AI platforms want your data to live on their systems. Most growing companies can't work that way. Their data is spread across a CRM, an ERP, spreadsheets, logs and a dozen other tools.</p>
+                    <p>GLC connects to whatever you already use. That lets us build custom solutions around your real data, like agents that pull logs to catch errors early or analyze visual data, instead of forcing you onto a new platform.</p>
+                    <p>We work with companies under 2,000 employees. They're big enough to feel the pain and small enough to move fast. We handle strategy, build custom AI agents for each business unit, train your team, stay on to monitor and support everything we ship, and help find the leaders to run it.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Team Section -->
-        <section class="section scroll-reveal">
-            <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold mb-12 text-center">Our Team</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 text-center">
-                        <div class="w-24 h-24 bg-gray-700 rounded-full mx-auto mb-4"></div>
-                        <h3 class="text-xl font-semibold mb-2">[Team Member Name]</h3>
-                        <p class="text-indigo-400 mb-3">[Title/Role]</p>
-                        <p class="text-gray-400 text-sm">[Brief description of their expertise and background]</p>
-                    </div>
-                    <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 text-center">
-                        <div class="w-24 h-24 bg-gray-700 rounded-full mx-auto mb-4"></div>
-                        <h3 class="text-xl font-semibold mb-2">[Team Member Name]</h3>
-                        <p class="text-indigo-400 mb-3">[Title/Role]</p>
-                        <p class="text-gray-400 text-sm">[Brief description of their expertise and background]</p>
-                    </div>
-                    <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 text-center">
-                        <div class="w-24 h-24 bg-gray-700 rounded-full mx-auto mb-4"></div>
-                        <h3 class="text-xl font-semibold mb-2">[Team Member Name]</h3>
-                        <p class="text-indigo-400 mb-3">[Title/Role]</p>
-                        <p class="text-gray-400 text-sm">[Brief description of their expertise and background]</p>
-                    </div>
+        <section id="values" class="section">
+            <div class="wrap">
+                <div class="head">
+                    <span class="label">What we stand for</span>
+                    <h2>The values behind <em>every engagement.</em></h2>
+                </div>
+                <div class="values">
+                    <div><h3>Trust is everything</h3><p>You're letting us into your systems and your data. We treat that access with the care it deserves.</p></div>
+                    <div><h3>Integrity is our identity</h3><p>We tell you what AI can and can't do for you, even when the honest answer is a smaller project.</p></div>
+                    <div><h3>Anyone can take the last shot</h3><p>The best idea wins, no matter whose it is. Your team and ours play as one.</p></div>
+                    <div><h3>Egoless</h3><p>We're partners, not gatekeepers. No jargon walls, no black boxes.</p></div>
+                    <div><h3>Finishing is what matters</h3><p>Starting something is easy. We measure ourselves by what's running in production and saving your team hours every week.</p></div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section class="section bg-indigo-900/20 scroll-reveal">
-            <div class="container mx-auto px-6 text-center">
-                <h3 class="text-4xl font-bold text-white mb-4">Ready to Transform Your Business?</h3>
-                <p class="text-lg text-gray-300 mb-8">Let's discuss how we can help you leverage AI for competitive advantage.</p>
-                <a href="mailto:info@GLC.ai" class="inline-block bg-green-500 text-white font-bold py-4 px-10 text-lg rounded-lg shadow-xl hover:bg-green-400 transition-all">
-                    Get In Touch
-                </a>
+        <section id="contact" class="section" style="padding-top:0">
+            <div class="wrap">
+                <div class="cta">
+                    <span class="label">Let's talk</span>
+                    <h2>Tell us what's draining your team.</h2>
+                    <p class="lede">We'll show you what AI can take off their plate, and who you'll need to lead it.</p>
+                    <a href="mailto:about@glcgroup.ai" class="btn btn-shine btn-light">Book a working session
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+                    </a>
+                    <span class="mail">about@glcgroup.ai</span>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 py-8">
-        <div class="container mx-auto px-6 text-center text-gray-500 flex flex-col items-center space-y-6">
-            <!-- FOOTER LOGO -->
-            <img src='https://i.postimg.cc/nzYThHcd/PNG-white-logo-fo-site.png' alt='GLC Logo with text' class="h-36">
-            <p>&copy; 2024 The Good Lyfe Consulting Group. All Rights Reserved.</p>
+    <footer>
+        <div class="wrap foot">
+            <div>
+                <a href="index.html" class="brand"><img src="assets/glc-mark.png" alt=""><span>The Good Lyfe Consulting Group</span></a>
+                <p>Redefining the modern workforce through intelligent automation and strategic foresight.</p>
+                <p class="shimmer made">Stephanos built this site with his custom AI agent.</p>
+            </div>
+            <div>
+                <h4>Coordinates</h4>
+                <ul>
+                    <li><a href="index.html#capabilities">Capabilities</a></li>
+                    <li><a href="index.html#executive-search">Executive Search</a></li>
+                    <li><a href="index.html#process">Process</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:about@glcgroup.ai">about@glcgroup.ai</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
         </div>
+        <div class="wrap foot-bar"><span>&copy; 2026 The Good Lyfe Consulting Group LLC</span><span class="ops"><span class="dot"></span>All systems operational</span></div>
     </footer>
 
-    <script>
-        // Scroll Reveal Animation
-        const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
-
-        const elementInView = (el, dividend = 1) => {
-            const elementTop = el.getBoundingClientRect().top;
-            return (
-                elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
-            );
-        };
-        
-        const displayScrollElement = (element) => {
-            element.classList.add('visible');
-        };
-
-        const handleScrollAnimation = () => {
-            scrollRevealElements.forEach((el) => {
-                if (elementInView(el, 1.25)) {
-                    displayScrollElement(el);
-                }
-            });
-        }
-
-        window.addEventListener('scroll', () => {
-            handleScrollAnimation();
-        });
-
-        // Trigger for elements already in view on load
-        handleScrollAnimation();
-    </script>
+    <script src="assets/site.js"></script>
 </body>
 </html>

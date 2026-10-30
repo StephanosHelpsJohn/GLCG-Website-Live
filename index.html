@@ -1,534 +1,347 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>The Good Lyfe Consulting Group | Operationalize AI</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" href="https://i.postimg.cc/bwsKFDvs/okay-purple-Hand-Back-White.png" type="image/png">
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
+    <meta name="description" content="GLC connects AI agents to every system you already run, so they take repetitive work off your team and create real output. Plus AI-powered executive search.">
+    <link rel="icon" href="assets/favicon.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind Configuration -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        bg: '#030303',
-                        violet: '#8B5CF6',
-                        cyan: '#06B6D4',
-                        emerald: '#10B981',
-                        offwhite: '#e5e5e5',
-                        graytext: '#a3a3a3',
-                    },
-                    fontFamily: {
-                        serif: ['"Instrument Serif"', 'serif'],
-                        sans: ['"Inter"', 'sans-serif'],
-                        mono: ['"JetBrains Mono"', 'monospace'],
-                    },
-                    animation: {
-                        'spin-slow': 'spin 4s linear infinite',
-                        'ticker': 'ticker 40s linear infinite',
-                        'float': 'float 10s ease-in-out infinite',
-                        'pulse-glow': 'pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    },
-                    keyframes: {
-                        ticker: {
-                            '0%': { transform: 'translateX(0)' },
-                            '100%': { transform: 'translateX(-50%)' },
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        'pulse-glow': {
-                            '0%, 100%': { opacity: '0.5' },
-                            '50%': { opacity: '1' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <style>
-        body {
-            background-color: #030303;
-            color: #d4d4d4;
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #030303;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-
-        /* Glassmorphism Utilities */
-        .glass-panel {
-            background: rgba(10, 10, 10, 0.9);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03); 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-            backdrop-filter: blur(10px);
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        .glass-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(139, 92, 246, 0.5);
-            box-shadow: 0 0 40px -10px rgba(139, 92, 246, 0.2);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        /* Text Shimmer */
-        .text-shimmer {
-            background: linear-gradient(90deg, #a78bfa 0%, #ffffff 40%, #ffffff 60%, #22d3ee 100%);
-            background-size: 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shimmer 5s infinite linear;
-        }
-
-        @keyframes shimmer {
-            0% { background-position: 100% center; }
-            100% { background-position: -100% center; }
-        }
-
-        /* Shiny Border Button */
-        .shiny-button-wrapper {
-            position: relative;
-            border-radius: 9999px;
-            padding: 1px;
-            overflow: hidden;
-            display: inline-block;
-        }
-
-        .shiny-button-wrapper::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(from 0deg, transparent 0%, #8b5cf6 40%, #06b6d4 50%, transparent 60%);
-            animation: spin 4s linear infinite;
-        }
-
-        .shiny-button-content {
-            position: relative;
-            background: #0a0a0a;
-            border-radius: 9999px;
-            z-index: 10;
-        }
-
-        /* Ticker Mask */
-        .ticker-mask {
-            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-        }
-
-        /* Code Syntax Highlighting Colors */
-        .code-keyword { color: #A78BFA; }
-        .code-string { color: #34D399; }
-        .code-class { color: #22D3EE; }
-        .code-comment { color: #9CA3AF; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/site.css">
 </head>
-<body class="selection:bg-violet-500/30 selection:text-violet-200">
+<body>
+    <div class="orbs" aria-hidden="true"><span></span><span></span><span></span></div>
 
-    <!-- Ambient Background Orbs -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div class="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-violet-600/10 rounded-full blur-[120px] animate-float"></div>
-        <div class="absolute top-[40%] left-[-10%] w-[500px] h-[500px] bg-cyan-600/5 rounded-full blur-[100px] animate-float" style="animation-delay: 2s;"></div>
-        <div class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-violet-900/10 rounded-full blur-[120px] animate-float" style="animation-delay: 4s;"></div>
-    </div>
-
-    <!-- Hidden Checkbox for Mobile Menu Logic (Pure CSS) -->
-    <input type="checkbox" id="mobile-menu-toggle" class="peer hidden">
-
-    <!-- Floating Navigation Pill -->
-    <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[98%] max-w-[900px] z-50 transition-all duration-300">
-        <div class="glass-panel rounded-full px-5 py-2 flex items-center justify-between shadow-2xl">
-            <!-- Logo - Smaller (approx 1/3 of previous h-20) -->
-            <a href="#" class="flex items-center group gap-3">
-                <img src="https://i.postimg.cc/PfbhmwLH/THE-GOOD-LYFE-CONSULTING-GROUP-White-No-Words-PNG.png" alt="GLC" class="h-8 w-auto object-contain group-hover:scale-105 transition-transform drop-shadow-[0_0_15px_rgba(139,92,246,0.3)]">
-                <span class="font-serif text-lg tracking-wide hidden sm:block text-white font-medium">GLC</span>
-            </a>
-
-            <!-- Links - Smaller text -->
-            <div class="hidden md:flex items-center space-x-6">
-                <a href="#process" class="text-xs uppercase tracking-widest text-neutral-300 hover:text-white hover:shadow-glow transition-all font-semibold">Process</a>
-                <a href="#services" class="text-xs uppercase tracking-widest text-neutral-300 hover:text-white hover:shadow-glow transition-all font-semibold">Services</a>
-                <a href="#why-us" class="text-xs uppercase tracking-widest text-neutral-300 hover:text-white hover:shadow-glow transition-all font-semibold">Why Us</a>
-                <a href="https://glcgroup.ai/privacy-policy.html" target="_blank" class="text-xs uppercase tracking-widest text-neutral-300 hover:text-white hover:shadow-glow transition-all font-semibold">Privacy Policy</a>
-            </div>
-            
-            <!-- Mobile Menu Trigger (Label triggers checkbox) -->
-            <label for="mobile-menu-toggle" class="md:hidden text-neutral-300 ml-auto hover:text-white transition-colors cursor-pointer">
-                <!-- Lucide Menu SVG -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-            </label>
+    <nav class="nav" aria-label="Main">
+        <a href="index.html" class="brand" aria-label="The Good Lyfe Consulting Group home">
+            <img src="assets/glc-mark.png" alt="">
+            <span>GLC<small>Good Lyfe Consulting</small></span>
+        </a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+        <div class="nav-links" id="nav-links">
+            <a href="#capabilities">Capabilities</a>
+            <a href="#executive-search">Executive Search</a>
+            <a href="#process">Process</a>
+            <a href="about.html">About</a>
+            <a href="mailto:about@glcgroup.ai" class="btn btn-solid btn-sm nav-cta">Talk to us</a>
         </div>
     </nav>
 
-    <!-- Mobile Menu Overlay (Controlled by Peer Checkbox) -->
-    <div id="mobile-menu" class="fixed inset-0 bg-black/95 backdrop-blur-xl z-40 transform translate-x-full peer-checked:translate-x-0 transition-transform duration-300 flex flex-col items-center justify-center space-y-8">
-        <label for="mobile-menu-toggle" class="absolute top-8 right-8 text-neutral-400 hover:text-white cursor-pointer">
-            <!-- Lucide X SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-        </label>
-        <a href="#process" class="text-4xl font-serif text-neutral-200 hover:text-white transition-colors">Process</a>
-        <a href="#services" class="text-4xl font-serif text-neutral-200 hover:text-white transition-colors">Services</a>
-        <a href="#why-us" class="text-4xl font-serif text-neutral-200 hover:text-white transition-colors">Why Us</a>
-        <a href="https://glcgroup.ai/privacy-policy.html" target="_blank" class="text-4xl font-serif text-neutral-200 hover:text-white transition-colors">Privacy Policy</a>
-        <a href="#contact" class="text-4xl font-serif text-neutral-200 hover:text-white transition-colors">Contact</a>
-    </div>
-
-    <main class="relative z-10">
-        <!-- Hero Section -->
-        <section class="min-h-screen flex flex-col items-center justify-center text-center px-4 pt-32 pb-20 relative">
-            <div class="max-w-6xl mx-auto space-y-10">
-                <!-- Eyebrow -->
-                <div>
-                    <span class="inline-block py-1.5 px-4 rounded-full border border-cyan-500/30 bg-cyan-900/10 text-xs uppercase tracking-[0.2em] text-cyan-300 font-bold mb-8 shadow-[0_0_20px_-5px_rgba(6,182,212,0.4)]">
-                        System Online
-                    </span>
-                </div>
-
-                <!-- Main Heading -->
-                <h1 class="font-serif text-6xl md:text-8xl lg:text-9xl leading-[0.9] tracking-tight text-white drop-shadow-2xl">
-                    Ditch Work's<br>
-                    <span class="text-neutral-500 italic">Drudgery.</span><br>
-                    <span class="text-shimmer font-medium">Operationalize AI.</span>
-                </h1>
-
-                <!-- Subtext -->
-                <p class="font-sans text-neutral-300 text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed font-light">
-                    The Good Lyfe Consulting Group redefines enterprise efficiency. We seamlessly integrate intelligence into your workforce.
-                </p>
-
-                <!-- Actions -->
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-8 mt-16">
-                    <!-- Shiny Border Button -->
-                    <a href="https://vimeo.com/1097685100" target="_blank" class="shiny-button-wrapper group cursor-pointer hover:scale-105 transition-transform duration-300">
-                        <div class="shiny-button-content px-10 py-5 flex items-center gap-4 bg-gray-900">
-                            <span class="text-white font-bold tracking-wide text-lg">Watch the System</span>
-                            <!-- Lucide Play SVG -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-violet-400 group-hover:scale-110 transition-transform"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                        </div>
+    <main>
+        <!-- Hero -->
+        <header class="hero">
+            <div class="wrap hero-copy">
+                <span class="status rise"><span class="dot"></span>System online</span>
+                <h1 class="rise" style="--d:.08s">Ditch work's<br><em>drudgery.</em><br><span class="shimmer">Operationalize AI.</span></h1>
+                <p class="lede rise" style="--d:.16s">We connect AI to every system your company already runs, so it can take the repetitive work off your team and create the output they used to build by hand. Then we find the leaders to run it.</p>
+                <div class="hero-actions rise" style="--d:.24s">
+                    <a href="mailto:about@glcgroup.ai" class="btn btn-shine">Book a working session
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
                     </a>
-                    
-                    <a href="#services" class="text-neutral-400 hover:text-white transition-colors text-sm uppercase tracking-widest border-b border-transparent hover:border-white pb-1 font-semibold">
-                        Explore Modules
+                    <a href="#film" class="btn">Watch the system
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l12-7.5z"/></svg>
                     </a>
                 </div>
             </div>
+
+            <div class="wrap">
+                <div class="graph rise" style="--d:.32s" aria-label="Example of the GLC agent layer: your systems feed it data, it writes results back into them and creates new work">
+                    <div class="graph-top">
+                        <b>glc / operations graph</b>
+                        <span class="graph-live"><span class="dot"></span>12 systems connected</span>
+                        <span>example run</span>
+                    </div>
+                    <div class="graph-body">
+                        <svg class="graph-wires" aria-hidden="true"></svg>
+                        <div class="graph-col">
+                            <span class="col-h">Your stack</span>
+                            <ul class="nodes">
+                                <li class="node" data-id="salesforce"><i>SF</i><span><b>Salesforce</b><small>CRM</small></span></li>
+                                <li class="node" data-id="hubspot"><i>HS</i><span><b>HubSpot</b><small>Marketing</small></span></li>
+                                <li class="node" data-id="netsuite"><i>NS</i><span><b>NetSuite</b><small>ERP</small></span></li>
+                                <li class="node" data-id="slack"><i>SL</i><span><b>Slack</b><small>Chat</small></span></li>
+                                <li class="node" data-id="gmail"><i>GM</i><span><b>Gmail</b><small>Email</small></span></li>
+                                <li class="node" data-id="m365"><i>MS</i><span><b>Microsoft 365</b><small>Docs</small></span></li>
+                                <li class="node" data-id="zendesk"><i>ZD</i><span><b>Zendesk</b><small>Support</small></span></li>
+                                <li class="node" data-id="jira"><i>JI</i><span><b>Jira</b><small>Issues</small></span></li>
+                                <li class="node" data-id="github"><i>GH</i><span><b>GitHub</b><small>Code</small></span></li>
+                                <li class="node" data-id="snowflake"><i>SN</i><span><b>Snowflake</b><small>Warehouse</small></span></li>
+                                <li class="node" data-id="datadog"><i>DD</i><span><b>Datadog</b><small>Logs</small></span></li>
+                                <li class="node" data-id="greenhouse"><i>GR</i><span><b>Greenhouse</b><small>Hiring</small></span></li>
+                            </ul>
+                        </div>
+                        <div class="graph-core">
+                            <div class="core">
+                                <span class="ring"></span><span class="ring r2"></span>
+                                <div class="core-in">
+                                    <img src="assets/glc-mark.png" alt="">
+                                    <b>Agent layer</b>
+                                    <span class="core-task">listening</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="graph-col">
+                            <span class="col-h">What AI created</span>
+                            <ol class="feed" aria-live="off"></ol>
+                        </div>
+                    </div>
+                    <div class="graph-foot"><span>Every action logged. A person approves anything that leaves the building.</span><span>runs <b class="runs">0</b></span></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Integration ticker -->
+        <div class="ticker" aria-label="Integration status">
+            <div class="ticker-track">
+                <span><b>Salesforce</b><i class="c">Connected</i></span><span><b>NetSuite</b><i class="m">Synced</i></span><span><b>Slack</b><i class="c">Live</i></span><span><b>Snowflake</b><i class="v">Read only</i></span><span><b>Zendesk</b><i class="c">Connected</i></span><span><b>GitHub</b><i class="m">Watching</i></span><span><b>Human approval</b><i class="v">On</i></span><span><b>Audit log</b><i class="m">Active</i></span><span><b>Your data</b><i class="c">Stays in place</i></span>
+                <span aria-hidden="true"><b>Salesforce</b><i class="c">Connected</i></span><span aria-hidden="true"><b>NetSuite</b><i class="m">Synced</i></span><span aria-hidden="true"><b>Slack</b><i class="c">Live</i></span><span aria-hidden="true"><b>Snowflake</b><i class="v">Read only</i></span><span aria-hidden="true"><b>Zendesk</b><i class="c">Connected</i></span><span aria-hidden="true"><b>GitHub</b><i class="m">Watching</i></span><span aria-hidden="true"><b>Human approval</b><i class="v">On</i></span><span aria-hidden="true"><b>Audit log</b><i class="m">Active</i></span><span aria-hidden="true"><b>Your data</b><i class="c">Stays in place</i></span>
+            </div>
+        </div>
+
+        <!-- Film -->
+        <section id="film" class="section">
+            <div class="wrap">
+                <div class="head">
+                    <span class="label">The film</span>
+                    <h2>What we do, in <em>32 seconds.</em></h2>
+                </div>
+                <div class="film">
+                    <button type="button" class="film-play" hidden>
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l12-7.5z"/></svg>Play film
+                    </button>
+                    <video src="assets/glc-film.mp4" poster="assets/glc-film-poster.jpg" autoplay muted loop playsinline disablepictureinpicture disableremoteplayback preload="auto" aria-label="GLC film: AI agents for every team, connected to your systems, plus AI-powered executive search"></video>
+                </div>
+                <div class="film-meta"><span>Busywork → AI agents → your systems → every team → the right leaders</span><span>0:32</span></div>
+            </div>
         </section>
 
-        <!-- Metrics Ticker -->
-        <section class="border-y border-white/10 bg-black/60 backdrop-blur-md h-20 flex items-center overflow-hidden relative mb-32">
-            <div class="ticker-mask w-full">
-                <div class="flex animate-ticker whitespace-nowrap">
-                    <!-- Ticker Content -->
-                    <div class="flex items-center gap-20 px-8">
-                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">Efficiency Gain</span><span class="font-mono text-emerald-400 text-xl font-bold">45%</span></div>
-                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">Implementation</span><span class="font-mono text-cyan-400 text-xl font-bold">2 WEEKS</span></div>
-                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">Cost Reduction</span><span class="font-mono text-violet-400 text-xl font-bold">30%</span></div>
-                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">Status</span><span class="font-mono text-white text-xl font-bold">OPTIMIZED</span></div>
-                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">System</span><span class="font-mono text-emerald-400 text-xl font-bold">ACTIVE</span></div>
-                        <!-- Duplicates for loop -->
-                         <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">Efficiency Gain</span><span class="font-mono text-emerald-400 text-xl font-bold">45%</span></div>
-                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">Implementation</span><span class="font-mono text-cyan-400 text-xl font-bold">2 WEEKS</span></div>
-                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">Cost Reduction</span><span class="font-mono text-violet-400 text-xl font-bold">30%</span></div>
-                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">Status</span><span class="font-mono text-white text-xl font-bold">OPTIMIZED</span></div>
-                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">System</span><span class="font-mono text-emerald-400 text-xl font-bold">ACTIVE</span></div>
+        <!-- The current state -->
+        <section id="why-us" class="section" style="padding-top:0">
+            <div class="wrap">
+                <div class="head">
+                    <span class="label">The current state</span>
+                    <h2>The models are ready. <em>Most organizations aren't.</em></h2>
+                    <p class="lede">Companies face new kinds of complexity. We turn them into an advantage.</p>
+                </div>
+                <div class="trio">
+                    <div class="glass">
+                        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></svg></span>
+                        <span class="k">Talent deficit</span>
+                        <h3>There's no one to build it</h3>
+                        <p>People who can ship production AI are scarce and expensive. We act as your AI architecture team from day one, so you don't wait a year to hire one.</p>
                     </div>
-                     <div class="flex items-center gap-20 px-8">
-                         <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">Efficiency Gain</span><span class="font-mono text-emerald-400 text-xl font-bold">45%</span></div>
-                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">Implementation</span><span class="font-mono text-cyan-400 text-xl font-bold">2 WEEKS</span></div>
-                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">Cost Reduction</span><span class="font-mono text-violet-400 text-xl font-bold">30%</span></div>
-                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">Status</span><span class="font-mono text-white text-xl font-bold">OPTIMIZED</span></div>
-                        <div class="flex items-baseline gap-4"><span class="text-xs font-mono uppercase text-gray-500 tracking-widest font-bold">System</span><span class="font-mono text-emerald-400 text-xl font-bold">ACTIVE</span></div>
+                    <div class="glass">
+                        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></span>
+                        <span class="k">Velocity</span>
+                        <h3>The ground keeps moving</h3>
+                        <p>Innovation cycles are measured in days now. We keep what we build current, so your stack stays on the leading edge instead of falling behind.</p>
+                    </div>
+                    <div class="glass">
+                        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+                        <span class="k">Governance</span>
+                        <h3>Data can't just leave</h3>
+                        <p>Security isn't an afterthought. Your data stays where it lives, agents get only the access they need, and every action they take is logged and reviewable.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Feature Grid (Challenges) -->
-        <section id="why-us" class="container mx-auto px-6 mb-32">
-            <div class="text-center mb-16">
-                <h2 class="font-serif text-4xl md:text-5xl text-white mb-6">The Current State</h2>
-                <p class="text-neutral-300 text-lg max-w-2xl mx-auto font-light">Enterprises face new vectors of complexity. We turn them into competitive advantages.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="glass-card rounded-[32px] p-10 group bg-neutral-900/40">
-                    <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-violet-500/20 transition-colors border border-white/5">
-                        <!-- Lucide CPU SVG -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-neutral-300 group-hover:text-violet-300 transition-colors"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>
-                    </div>
-                    <h3 class="font-serif text-3xl mb-4 text-white">Talent Deficit</h3>
-                    <p class="text-neutral-400 leading-relaxed text-base font-light">The AI talent gap is widening. We bridge it by acting as your dedicated neural architecture team, deploying instant expertise.</p>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="glass-card rounded-[32px] p-10 group bg-neutral-900/40">
-                    <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-cyan-500/20 transition-colors border border-white/5">
-                        <!-- Lucide Zap SVG -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-neutral-300 group-hover:text-cyan-300 transition-colors"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                    </div>
-                    <h3 class="font-serif text-3xl mb-4 text-white">Velocity</h3>
-                    <p class="text-neutral-400 leading-relaxed text-base font-light">Innovation cycles are now measured in days. We keep your stack bleeding-edge, implementing updates before the market reacts.</p>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="glass-card rounded-[32px] p-10 group bg-neutral-900/40">
-                    <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-emerald-500/20 transition-colors border border-white/5">
-                        <!-- Lucide Shield Check SVG -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-neutral-300 group-hover:text-emerald-300 transition-colors"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
-                    </div>
-                    <h3 class="font-serif text-3xl mb-4 text-white">Governance</h3>
-                    <p class="text-neutral-400 leading-relaxed text-base font-light">Security is not an afterthought. We build fortified environments where data sovereignty and compliance are immutable.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Code Block / Services Section -->
-        <section id="services" class="container mx-auto px-6 mb-32">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <!-- Left Content -->
+        <!-- Integration protocols -->
+        <section id="integration" class="section">
+            <div class="wrap integrate">
                 <div>
-                    <h2 class="font-serif text-4xl md:text-5xl text-white mb-10">Seamless Integration Protocols</h2>
-                    <div class="space-y-10">
-                        <div class="flex gap-8 group">
-                            <div class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center flex-shrink-0 group-hover:border-violet-500/80 transition-colors bg-white/5">
-                                <span class="font-mono text-violet-300 text-xl font-bold">01</span>
-                            </div>
-                            <div>
-                                <h4 class="text-2xl text-white mb-3 font-medium">Frictionless Adoption</h4>
-                                <p class="text-neutral-300 text-base leading-relaxed font-light">AI should adapt to you. We inject intelligence directly into your existing ERP and CRM layers.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-8 group">
-                            <div class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center flex-shrink-0 group-hover:border-cyan-500/80 transition-colors bg-white/5">
-                                <span class="font-mono text-cyan-300 text-xl font-bold">02</span>
-                            </div>
-                            <div>
-                                <h4 class="text-2xl text-white mb-3 font-medium">Role-Based Intelligence</h4>
-                                <p class="text-neutral-300 text-base leading-relaxed font-light">From C-Suite to support, we democratize access by building custom agents for every function.</p>
-                            </div>
-                        </div>
-                         <div class="flex gap-8 group">
-                            <div class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center flex-shrink-0 group-hover:border-emerald-500/80 transition-colors bg-white/5">
-                                <span class="font-mono text-emerald-400 text-xl font-bold">03</span>
-                            </div>
-                            <div>
-                                <h4 class="text-2xl text-white mb-3 font-medium">Automated Drudgery</h4>
-                                <p class="text-neutral-300 text-base leading-relaxed font-light">Eliminate repetitive tasks. Free your human capital to focus on creative and strategic synthesis.</p>
-                            </div>
-                        </div>
-
-                        <!-- 4th Bullet Point -->
-                        <div class="flex gap-8 group">
-                            <div class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center flex-shrink-0 group-hover:border-violet-500/80 transition-colors bg-white/5">
-                                <span class="font-mono text-violet-300 text-xl font-bold">04</span>
-                            </div>
-                            <div>
-                                <h4 class="text-2xl text-white mb-3 font-medium">Create agents </h4>
-                                <p class="text-neutral-300 text-base leading-relaxed font-light">Clean, secure AI deployment that helps you move faster and stay protected. </p>
-                            </div>
-                        </div>
+                    <div class="head" style="margin-bottom:36px">
+                        <span class="label">How we plug in</span>
+                        <h2>Seamless integration <em>protocols.</em></h2>
                     </div>
+                    <ol class="protocols">
+                        <li><span class="n">01</span><div><h3>Frictionless adoption</h3><p>AI should adapt to you. We build intelligence straight into the ERP and CRM layers you already run.</p></div></li>
+                        <li><span class="n">02</span><div><h3>Role-based intelligence</h3><p>From the C-suite to support, every function gets agents built for how it actually works.</p></div></li>
+                        <li><span class="n">03</span><div><h3>Automated drudgery</h3><p>Repetitive tasks go away, so your people can focus on creative and strategic work.</p></div></li>
+                        <li><span class="n">04</span><div><h3>Secure agent deployment</h3><p>Clean, secure AI deployment that helps you move faster and stay protected.</p></div></li>
+                    </ol>
                 </div>
+                <div class="code" aria-label="Example integration config">
+                    <div class="code-top"><span class="lights"><i></i><i></i><i></i></span><span>integration_config.js</span><span>example</span></div>
+<pre><span class="kw">import</span> { connect, agent } <span class="kw">from</span> <span class="st">"@glc/core"</span>;
 
-                <!-- Right Code Block -->
-                <div>
-                    <div class="glass-panel rounded-2xl overflow-hidden border border-white/20 shadow-2xl">
-                        <!-- Toolbar -->
-                        <div class="bg-neutral-900/90 px-6 py-4 flex items-center justify-between border-b border-white/10">
-                            <div class="flex gap-2">
-                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                            </div>
-                            <span class="font-mono text-sm text-neutral-400 font-medium">integration_config.js</span>
-                            <!-- Lucide Copy SVG -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-neutral-400 hover:text-white cursor-pointer"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-                        </div>
-                        <!-- Code Content -->
-                        <div class="p-8 overflow-x-auto bg-[#080808]">
-                            <pre class="font-mono text-sm leading-loose text-neutral-300">
-<span class="code-keyword">const</span> <span class="code-class">GLC_System</span> = <span class="code-keyword">require</span>(<span class="code-string">'@glc/core'</span>);
+<span class="cm">// Connect to what you already run. Nothing migrates.</span>
+<span class="kw">const</span> stack = <span class="kw">await</span> <span class="fn">connect</span>(
+  [<span class="st">"salesforce"</span>, <span class="st">"gmail"</span>, <span class="st">"netsuite"</span>, <span class="st">"slack"</span>],
+  { access: <span class="st">"least-privilege"</span>, audit: <span class="kw">true</span> }
+);
 
-<span class="code-comment">// Initialize Enterprise AI Layer</span>
-<span class="code-keyword">async function</span> <span class="code-class">operationalize</span>() {
-  <span class="code-keyword">const</span> config = {
-    mode: <span class="code-string">'autonomous'</span>,
-    security: <span class="code-string">'enterprise-grade'</span>,
-    modules: [<span class="code-string">'HR'</span>, <span class="code-string">'Sales'</span>, <span class="code-string">'Ops'</span>]
-  };
+<span class="cm">// One agent per team. People approve what matters.</span>
+<span class="kw">await</span> <span class="fn">agent</span>(<span class="st">"sales-followups"</span>, {
+  reads: [stack.salesforce, stack.gmail],
+  creates: <span class="st">"draft follow-ups"</span>,
+  approval: <span class="st">"account owner"</span>,
+});
 
-  <span class="code-comment">// Deploy Custom Agents</span>
-  <span class="code-keyword">await</span> GLC_System.<span class="code-class">deploy</span>(config);
-  
-  <span class="code-keyword">return</span> {
-    status: <span class="code-string">'optimized'</span>,
-    efficiency: <span class="code-string">'+400%'</span>
-  };
-}</pre>
-                        </div>
+<span class="cm">// status: "live", every action logged</span></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Capabilities -->
+        <section id="capabilities" class="section">
+            <div class="wrap">
+                <div class="head">
+                    <span class="label">Capabilities</span>
+                    <h2>From first workflow to <em>company-wide</em> AI.</h2>
+                    <p class="lede">We connect to any data source you have. No migrating everything onto a vendor's platform first.</p>
+                </div>
+                <div class="bento">
+                    <div class="cell glass wide">
+                        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg></span>
+                        <h3>Custom agents for every team</h3>
+                        <p>Sales, operations, finance, HR, support. Each team gets agents built around how it actually works, with a person approving anything that matters. That includes ClawBots; see <a href="https://www.atxclaw.com/v3#pricing" target="_blank" rel="noopener">ClawBot pricing</a>.</p>
+                    </div>
+                    <div class="cell glass wide">
+                        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8 7.5 10.5 16M16 7.5 13.5 16M8.5 6h7"/></svg></span>
+                        <h3>Workflow automation</h3>
+                        <p>Agentic workflows that move data between your tools, trigger on real events and hand off cleanly to people. Built on n8n, so you're never locked in.</p>
+                    </div>
+                    <div class="cell glass">
+                        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></span>
+                        <h3>AI strategy</h3>
+                        <p>An org-wide plan: where AI pays off first, what to build, what to buy and what to leave alone.</p>
+                    </div>
+                    <div class="cell glass">
+                        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2Z"/><path d="M8 7h6M8 11h6"/></svg></span>
+                        <h3>Team training</h3>
+                        <p>Hands-on sessions so your people use the new tools on day one and keep improving them after.</p>
+                    </div>
+                    <div class="cell glass">
+                        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+                        <h3>Monitoring and support</h3>
+                        <p>We stay on after launch: watching runs, fixing what breaks and tuning agents as your business changes.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Process Section -->
-        <section id="process" class="container mx-auto px-6 mb-32">
-             <div class="text-center mb-16">
-                <h2 class="font-serif text-4xl md:text-5xl text-white mb-6">Transformation Sequence</h2>
-            </div>
-            
-            <div class="relative max-w-4xl mx-auto">
-                <!-- Timeline Line -->
-                <div class="absolute left-[27px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-violet-500/0 via-violet-500/60 to-violet-500/0 md:left-1/2 md:-ml-[1px]"></div>
-
-                <!-- Step 1 -->
-                <div class="relative mb-20 md:grid md:grid-cols-2 md:gap-16">
-                    <div class="hidden md:block text-right">
-                        <h3 class="font-serif text-3xl text-white mb-2">Audit & Discovery</h3>
-                        <p class="text-neutral-300 text-base font-light">Deep dive into operations to identify remedial tasks ripe for automation.</p>
-                    </div>
-                    <div class="absolute left-0 md:left-1/2 -ml-[28px] md:-ml-[28px] flex items-center justify-center">
-                        <div class="w-14 h-14 rounded-full bg-[#030303] border-2 border-violet-500/30 flex items-center justify-center z-10 shadow-[0_0_20px_-5px_#8b5cf6] bg-black">
-                            <span class="font-mono text-violet-300 font-bold text-lg">01</span>
-                        </div>
-                    </div>
-                    <div class="pl-24 md:hidden">
-                        <h3 class="font-serif text-3xl text-white mb-2">Audit & Discovery</h3>
-                        <p class="text-neutral-300 text-base font-light">Deep dive into operations to identify remedial tasks ripe for automation.</p>
-                    </div>
+        <!-- Executive search -->
+        <section id="executive-search" class="section search">
+            <div class="wrap">
+                <div class="head">
+                    <span class="label">Executive search</span>
+                    <h2>The right leader changes the trajectory. <em>We find them.</em></h2>
+                    <p class="lede">The best executives are rarely job hunting. They're running something important somewhere else. We use AI to map the entire market and read real track records, then apply the judgment only people can, so you meet a short slate of leaders built for the role you actually need filled.</p>
                 </div>
 
-                <!-- Step 2 -->
-                <div class="relative mb-20 md:grid md:grid-cols-2 md:gap-16">
-                    <div class="pl-24 md:pl-0 md:col-start-2">
-                        <h3 class="font-serif text-3xl text-white mb-2">Architectural Plan</h3>
-                        <p class="text-neutral-300 text-base font-light">No boilerplate. We design a bespoke neural fabric tailored to your stack.</p>
-                    </div>
-                    <div class="absolute left-0 md:left-1/2 -ml-[28px] md:-ml-[28px] flex items-center justify-center">
-                        <div class="w-14 h-14 rounded-full bg-[#030303] border-2 border-cyan-500/30 flex items-center justify-center z-10 shadow-[0_0_20px_-5px_#06b6d4] bg-black">
-                            <span class="font-mono text-cyan-300 font-bold text-lg">02</span>
-                        </div>
-                    </div>
-                </div>
+                <div class="search-grid">
+                    <ol class="steps">
+                        <li><span class="n">01</span><div><h3>Calibrate the role</h3><p>We start with what this leader must own and deliver in their first 18 months, and turn it into a scorecard. Every candidate is measured against the same bar.</p></div></li>
+                        <li><span class="n">02</span><div><h3>Map the whole market</h3><p>AI maps operators at comparable companies, rising leaders one step from the role, and people who aren't looking. Nobody is missed because they never applied.</p></div></li>
+                        <li><span class="n">03</span><div><h3>Read the evidence</h3><p>We look past titles to what each person built: what grew under them, how their teams changed, what they shipped. Structured interviews are scored against the scorecard.</p></div></li>
+                        <li><span class="n">04</span><div><h3>Present a calibrated slate</h3><p>A short list, each with a written case for the hire, including the risks. You spend your time on finalists, not resumes.</p></div></li>
+                        <li><span class="n">05</span><div><h3>Close and land the hire</h3><p>Backchannel references, compensation benchmarking, offer strategy and a 90-day integration plan, so the hire works out after they sign.</p></div></li>
+                    </ol>
 
-                <!-- Step 3 -->
-                <div class="relative mb-20 md:grid md:grid-cols-2 md:gap-16">
-                    <div class="hidden md:block text-right">
-                        <h3 class="font-serif text-3xl text-white mb-2">Deploy & Operationalize</h3>
-                        <p class="text-neutral-300 text-base font-light">Full implementation and training. We ensure effortless adoption from Day Zero.</p>
-                    </div>
-                    <div class="absolute left-0 md:left-1/2 -ml-[28px] md:-ml-[28px] flex items-center justify-center">
-                        <div class="w-14 h-14 rounded-full bg-[#030303] border-2 border-emerald-500/30 flex items-center justify-center z-10 shadow-[0_0_20px_-5px_#10b981] bg-black">
-                            <span class="font-mono text-emerald-400 font-bold text-lg">03</span>
+                    <div>
+                        <div class="split">
+                            <div class="ai">
+                                <h4>Where AI does the heavy lifting</h4>
+                                <ul>
+                                    <li>Mapping every relevant leader, not just active candidates</li>
+                                    <li>Pulling signal from public work, talks, filings and company growth</li>
+                                    <li>Scoring every candidate against the same scorecard</li>
+                                    <li>Checking the slate for blind spots and bias</li>
+                                </ul>
+                            </div>
+                            <div class="human">
+                                <h4>Where people make the call</h4>
+                                <ul>
+                                    <li>Reference and backchannel conversations</li>
+                                    <li>Culture, chemistry and leadership style</li>
+                                    <li>Negotiation and closing</li>
+                                    <li>Confidentiality, start to finish</li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="pl-24 md:hidden">
-                        <h3 class="font-serif text-3xl text-white mb-2">Deploy & Operationalize</h3>
-                        <p class="text-neutral-300 text-base font-light">Full implementation and training. We ensure effortless adoption from Day Zero.</p>
+                        <div class="roles" aria-label="Leadership roles">
+                            <span>CEO</span><span>COO</span><span>CFO</span><span>CTO</span><span>Chief AI Officer</span><span>VP Engineering</span><span>VP Sales</span><span>Head of Operations</span><span>Board seats</span>
+                        </div>
+                        <p class="quote">We build AI systems every day. We know what the leaders who run them look like.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section id="contact" class="container mx-auto px-6 mb-32 text-center">
-            <div class="glass-card rounded-[40px] p-16 relative overflow-hidden border border-white/20">
-                <div class="absolute inset-0 bg-gradient-to-r from-violet-900/30 to-cyan-900/30"></div>
-                <div class="relative z-10">
-                    <h2 class="font-serif text-5xl md:text-7xl text-white mb-8">Ready to Supercharge?</h2>
-                    <p class="text-neutral-300 mb-12 text-xl max-w-2xl mx-auto font-light">Operationalize AI. Don't just talk about it.</p>
-                    <a href="mailto:about@glcgroup.ai" class="shiny-button-wrapper group cursor-pointer inline-block hover:scale-105 transition-transform duration-300">
-                        <div class="shiny-button-content px-12 py-6 bg-white group-hover:bg-gray-100 transition-colors">
-                            <span class="text-black font-extrabold tracking-widest uppercase text-lg">Initiate Contact</span>
-                        </div>
+        <!-- Process -->
+        <section id="process" class="section">
+            <div class="wrap">
+                <div class="head">
+                    <span class="label">How an engagement runs</span>
+                    <h2>Transformation <em>sequence.</em></h2>
+                </div>
+                <div class="bar" aria-hidden="true"></div>
+                <div class="timeline">
+                    <div class="glass"><span class="n">01 / AUDIT</span><h3>Audit and discovery</h3><p>A deep dive into your operations to find the repetitive work that drains the most hours.</p></div>
+                    <div class="glass"><span class="n">02 / DESIGN</span><h3>Architecture plan</h3><p>No boilerplate. A plan built for your stack and your data, with clear owners and approvals.</p></div>
+                    <div class="glass"><span class="n">03 / DEPLOY</span><h3>Deploy and operationalize</h3><p>Full implementation and training, so adoption starts on day one.</p></div>
+                    <div class="glass"><span class="n">04 / OPERATE</span><h3>Monitor and improve</h3><p>We keep everything running, measure the hours returned and tune as you grow.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Principles -->
+        <section class="section" style="padding-top:0">
+            <div class="wrap">
+                <div class="principles">
+                    <div><h3>Your data stays where it lives</h3><p>We connect to your systems. We don't ask you to move them.</p></div>
+                    <div><h3>People approve what matters</h3><p>Agents draft, sort and flag. Your team decides.</p></div>
+                    <div><h3>Measured in hours returned</h3><p>Success means your people spend their week on work they actually want to do.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section id="contact" class="section" style="padding-top:0">
+            <div class="wrap">
+                <div class="cta">
+                    <span class="label">Start here</span>
+                    <h2>Ready to <em>supercharge?</em></h2>
+                    <p class="lede">Operationalize AI. Don't just talk about it. Book a 30-minute working session: you walk us through the work, we show you what AI can take off the plate, and whether a leadership hire belongs in the plan.</p>
+                    <a href="mailto:about@glcgroup.ai" class="btn btn-shine btn-light">Initiate contact
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
                     </a>
+                    <span class="mail">about@glcgroup.ai</span>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-white/10 bg-[#050505] pt-20 pb-10">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-4 gap-12 mb-16">
-                <!-- Brand -->
-                <div class="col-span-1">
-                    <img src="https://i.postimg.cc/PfbhmwLH/THE-GOOD-LYFE-CONSULTING-GROUP-White-No-Words-PNG.png" class="h-24 mb-6 opacity-100" alt="GLC Logo">
-                    <p class="text-neutral-400 max-w-sm text-sm leading-relaxed">Redefining the modern workforce through intelligent automation and strategic foresight.</p>
-                </div>
-
-                <!-- Stephanos Note (New Column) -->
-                <div class="col-span-1 flex flex-col justify-end pb-1">
-                    <p class="text-shimmer font-medium text-2xl leading-relaxed">Stephanos created this website in 20-minutes using his custom AI Agent</p>
-                </div>
-                
-                <!-- Links -->
-                <div>
-                    <h4 class="text-xs uppercase tracking-[0.2em] text-white font-bold mb-6">Coordinates</h4>
-                    <ul class="space-y-4">
-                        <li><a href="#" class="text-neutral-400 hover:text-violet-300 text-sm transition-colors">Home</a></li>
-                        <li><a href="#process" class="text-neutral-400 hover:text-violet-300 text-sm transition-colors">Process</a></li>
-                        <li><a href="#services" class="text-neutral-400 hover:text-violet-300 text-sm transition-colors">Services</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Legal -->
-                <div>
-                    <h4 class="text-xs uppercase tracking-[0.2em] text-white font-bold mb-6">Legal</h4>
-                    <ul class="space-y-4">
-                        <li><a href="https://glcgroup.ai/privacy-policy.html" class="text-neutral-400 hover:text-cyan-300 text-sm transition-colors">Privacy Policy</a></li>
-                    </ul>
-                </div>
+    <footer>
+        <div class="wrap foot">
+            <div>
+                <a href="index.html" class="brand"><img src="assets/glc-mark.png" alt=""><span>The Good Lyfe Consulting Group</span></a>
+                <p>Redefining the modern workforce through intelligent automation and strategic foresight.</p>
+                <p class="shimmer made">Stephanos built this site with his custom AI agent.</p>
             </div>
-
-            <!-- Bottom Bar -->
-            <div class="flex flex-col md:flex-row justify-between items-center border-t border-white/10 pt-8 gap-4">
-                <p class="text-neutral-500 text-xs">&copy; 2026 The Good Lyfe Consulting Group.</p>
-                <div class="flex items-center gap-3">
-                    <div class="relative flex h-2 w-2">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                    </div>
-                    <span class="text-emerald-400 text-xs font-mono uppercase tracking-widest font-bold">All Systems Operational</span>
-                </div>
+            <div>
+                <h4>Coordinates</h4>
+                <ul>
+                    <li><a href="#capabilities">Capabilities</a></li>
+                    <li><a href="#executive-search">Executive Search</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:about@glcgroup.ai">about@glcgroup.ai</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                </ul>
             </div>
         </div>
+        <div class="wrap foot-bar"><span>&copy; 2026 The Good Lyfe Consulting Group LLC</span><span class="ops"><span class="dot"></span>All systems operational</span></div>
     </footer>
+
+    <script src="assets/site.js"></script>
 </body>
 </html>

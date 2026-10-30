@@ -6,72 +6,22 @@ This is a static website for The Good Lyfe Consulting Group, a consulting compan
 
 ## System Architecture
 
-### Frontend Architecture
-- **Technology Stack**: Pure HTML5, CSS3, and JavaScript (no framework dependencies)
-- **Styling Framework**: Tailwind CSS (CDN-based implementation)
-- **Typography**: Google Fonts (Inter family) for consistent, modern typography
-- **Icons**: Lucide React icons for UI elements
-- **Layout Pattern**: Multi-page static site with shared design patterns
+Plain static HTML, no build step. Three pages share one stylesheet and one script:
 
-### Design System
-- **Color Scheme**: Dark theme with deep purple/blue accents (#0A0917 background, #E0E0E0 text)
-- **Visual Effects**: Gradient backgrounds, backdrop blur effects, and hover animations
-- **Responsive Design**: Mobile-first approach using Tailwind's responsive utilities
+- `index.html`: hero with an operations graph (12 systems wired into the agent layer, with a feed of what AI created), integration ticker, the GLC film, the current state, integration protocols with an example config, capabilities, executive search, engagement process, contact
+- `about.html`: founder bio, story, values
+- `privacy-policy.html`: privacy policy
+- `assets/site.css`: design tokens (colors, fonts, spacing) and all styles
+- `assets/site.js`: mobile menu, film autoplay fallback, hero operations graph
+- `assets/`: logo mark, favicon, founder photo, `glc-film.mp4` and its poster
 
-## Key Components
+Fonts load from Google Fonts (Geist, Geist Mono, Instrument Serif). Everything else is self-hosted in `assets/`.
 
-### Pages Structure
-1. **index.html** - Main landing page with hero section, services overview, and company introduction
-2. **about.html** - Detailed company information, team, and history (partially implemented)
+The film is rendered with Remotion from `~/gamerplug-stories/src/glc/GLCFilm.tsx` (composition `GLCFilm`), then scaled to 1280px wide for the site.
 
-### Shared Components
-- **Header Navigation**: Fixed header with backdrop blur and transparency effects
-- **Hero Sections**: Gradient backgrounds with animated elements
-- **Content Sections**: Standardized padding and spacing (8rem sections)
-- **Interactive Elements**: Hover effects and smooth transitions
+## Deployment
 
-### Visual Elements
-- **Gradient Text**: Linear gradient effects for accent text (#4F46E5 to #00A9FF)
-- **Button Animations**: Transform and shadow effects on hover
-- **Scroll Animations**: Reveal animations for content sections
-- **Timeline Components**: Visual timeline elements with custom styling
-
-## Data Flow
-
-### Static Content Delivery
-- Pure client-side rendering with no backend dependencies
-- External assets loaded via CDN (fonts, icons, styling framework)
-- Image assets hosted on external services (PostImg for favicon)
-
-### User Interactions
-- Smooth scrolling navigation between sections
-- Hover effects and micro-interactions for enhanced UX
-- Responsive design adapts to different screen sizes
-
-## External Dependencies
-
-### CDN Resources
-- **Tailwind CSS**: `https://cdn.tailwindcss.com` - Main CSS framework
-- **Google Fonts**: Inter font family for typography consistency
-- **Lucide Icons**: `https://unpkg.com/lucide-react@latest/dist/lucide-react.js` - Icon library
-- **External Images**: PostImg service for hosting brand assets
-
-### Browser Compatibility
-- Modern browsers supporting CSS Grid, Flexbox, and CSS custom properties
-- Progressive enhancement approach for older browsers
-
-## Deployment Strategy
-
-### Static Hosting
-- **Deployment Type**: Static site deployment suitable for any web server
-- **Requirements**: No server-side processing needed
-- **CDN Compatibility**: All external dependencies loaded from reliable CDNs
-- **Performance**: Optimized for fast loading with minimal dependencies
-
-### Hosting Options
-- Compatible with GitHub Pages, Netlify, Vercel, or traditional web hosting
-- No build process required - direct file serving
-- HTTPS recommended for secure font and asset loading
+Replit static deployment of the repo root.
 
 ## User Preferences
 
@@ -81,3 +31,5 @@ Preferred communication style: Simple, everyday language.
 
 Changelog:
 - July 01, 2025. Initial setup
+- October 29, 2026. Redesign: shared CSS/JS, GLC film, Executive Search section, rebuilt About and Privacy pages
+- October 29, 2026. Merged the live site's best elements (serif headlines, shimmer, glowing buttons, ticker, integration code panel, status footer) into the redesign; new hero operations graph
